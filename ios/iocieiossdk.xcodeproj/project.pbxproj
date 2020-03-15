@@ -1,0 +1,1245 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00E356F31AD99517003FC87E /* iocieiossdkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* iocieiossdkTests.m */; };
+		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
+		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
+		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		2752F4854E373D0CF424114B /* libPods-iocieiossdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 047158E7A33B48B982B1FDC0 /* libPods-iocieiossdk.a */; };
+		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
+		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		2DCD954D1E0B4F2C00145EB5 /* iocieiossdkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* iocieiossdkTests.m */; };
+		5E432340DBB30FE49A5B2B99 /* libPods-iocieiossdk-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EBF18ADDB7837722CA9E9DE /* libPods-iocieiossdk-tvOS.a */; };
+		60DCE9A7880DD9AE24CF6A86 /* libPods-iocieiossdkTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A198EB6A12762DE4BF54E20F /* libPods-iocieiossdkTests.a */; };
+		C1A2C3C80E414E7B930FE6CE /* libPods-iocieiossdk-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B92395237175EDBB447B22A /* libPods-iocieiossdk-tvOSTests.a */; };
+		E5827BFA241D3C4B0038FA20 /* Array.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5827BF0241D3C4B0038FA20 /* Array.cpp */; };
+		E5827BFB241D3C4B0038FA20 /* CIEEngineHelper.c in Sources */ = {isa = PBXBuildFile; fileRef = E5827BF2241D3C4B0038FA20 /* CIEEngineHelper.c */; };
+		E5827BFC241D3C4B0038FA20 /* Base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5827BF3241D3C4B0038FA20 /* Base64.cpp */; };
+		E5827BFD241D3C4B0038FA20 /* CIEEngine.c in Sources */ = {isa = PBXBuildFile; fileRef = E5827BF5241D3C4B0038FA20 /* CIEEngine.c */; };
+		E5827BFE241D3C4B0038FA20 /* ASNParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5827BF8241D3C4B0038FA20 /* ASNParser.cpp */; };
+		E5827BFF241D3C4B0038FA20 /* AES.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5827BF9241D3C4B0038FA20 /* AES.cpp */; };
+		E5827C0F241D3C700038FA20 /* CIETagReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5827C02241D3C6F0038FA20 /* CIETagReader.swift */; };
+		E5827C10241D3C700038FA20 /* CIETagReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5827C02241D3C6F0038FA20 /* CIETagReader.swift */; };
+		E5827C11241D3C700038FA20 /* ExtAuthKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5827C03241D3C6F0038FA20 /* ExtAuthKey.cpp */; };
+		E5827C12241D3C700038FA20 /* ExtAuthKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5827C03241D3C6F0038FA20 /* ExtAuthKey.cpp */; };
+		E5827C13241D3C700038FA20 /* DES3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5827C07241D3C700038FA20 /* DES3.cpp */; };
+		E5827C14241D3C700038FA20 /* DES3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5827C07241D3C700038FA20 /* DES3.cpp */; };
+		E5827C15241D3C700038FA20 /* HTTPSConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = E5827C08241D3C700038FA20 /* HTTPSConnection.m */; };
+		E5827C16241D3C700038FA20 /* HTTPSConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = E5827C08241D3C700038FA20 /* HTTPSConnection.m */; };
+		E5827C17241D3C700038FA20 /* ErrorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5827C0B241D3C700038FA20 /* ErrorHelper.swift */; };
+		E5827C18241D3C700038FA20 /* ErrorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5827C0B241D3C700038FA20 /* ErrorHelper.swift */; };
+		E5827C19241D3C700038FA20 /* CIEIDSdk.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5827C0D241D3C700038FA20 /* CIEIDSdk.swift */; };
+		E5827C1A241D3C700038FA20 /* CIEIDSdk.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5827C0D241D3C700038FA20 /* CIEIDSdk.swift */; };
+		E5827C1B241D3C700038FA20 /* IAS.mm in Sources */ = {isa = PBXBuildFile; fileRef = E5827C0E241D3C700038FA20 /* IAS.mm */; };
+		E5827C1C241D3C700038FA20 /* IAS.mm in Sources */ = {isa = PBXBuildFile; fileRef = E5827C0E241D3C700038FA20 /* IAS.mm */; };
+		E5827C39241D3CA00038FA20 /* SHA1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5827C1D241D3C9D0038FA20 /* SHA1.cpp */; };
+		E5827C3A241D3CA00038FA20 /* SHA1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5827C1D241D3C9D0038FA20 /* SHA1.cpp */; };
+		E5827C3B241D3CA00038FA20 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5827C1E241D3C9E0038FA20 /* libssl.a */; };
+		E5827C3C241D3CA00038FA20 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5827C1E241D3C9E0038FA20 /* libssl.a */; };
+		E5827C3D241D3CA00038FA20 /* UtilException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5827C1F241D3C9E0038FA20 /* UtilException.cpp */; };
+		E5827C3E241D3CA00038FA20 /* UtilException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5827C1F241D3C9E0038FA20 /* UtilException.cpp */; };
+		E5827C3F241D3CA00038FA20 /* MAC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5827C22241D3C9E0038FA20 /* MAC.cpp */; };
+		E5827C40241D3CA00038FA20 /* MAC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5827C22241D3C9E0038FA20 /* MAC.cpp */; };
+		E5827C41241D3CA00038FA20 /* libnghttp2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5827C24241D3C9E0038FA20 /* libnghttp2.a */; };
+		E5827C42241D3CA00038FA20 /* libnghttp2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5827C24241D3C9E0038FA20 /* libnghttp2.a */; };
+		E5827C43241D3CA00038FA20 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5827C25241D3C9E0038FA20 /* Logging.swift */; };
+		E5827C44241D3CA00038FA20 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5827C25241D3C9E0038FA20 /* Logging.swift */; };
+		E5827C45241D3CA00038FA20 /* SHA256.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5827C27241D3C9E0038FA20 /* SHA256.cpp */; };
+		E5827C46241D3CA00038FA20 /* SHA256.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5827C27241D3C9E0038FA20 /* SHA256.cpp */; };
+		E5827C47241D3CA00038FA20 /* Token.mm in Sources */ = {isa = PBXBuildFile; fileRef = E5827C28241D3C9E0038FA20 /* Token.mm */; };
+		E5827C48241D3CA00038FA20 /* Token.mm in Sources */ = {isa = PBXBuildFile; fileRef = E5827C28241D3C9E0038FA20 /* Token.mm */; };
+		E5827C49241D3CA00038FA20 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5827C29241D3C9E0038FA20 /* Token.swift */; };
+		E5827C4A241D3CA00038FA20 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5827C29241D3C9E0038FA20 /* Token.swift */; };
+		E5827C4B241D3CA00038FA20 /* SHA512.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5827C2A241D3C9F0038FA20 /* SHA512.cpp */; };
+		E5827C4C241D3CA00038FA20 /* SHA512.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5827C2A241D3C9F0038FA20 /* SHA512.cpp */; };
+		E5827C4D241D3CA00038FA20 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5827C2B241D3C9F0038FA20 /* libcrypto.a */; };
+		E5827C4E241D3CA00038FA20 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5827C2B241D3C9F0038FA20 /* libcrypto.a */; };
+		E5827C4F241D3CA00038FA20 /* MD5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5827C2D241D3C9F0038FA20 /* MD5.cpp */; };
+		E5827C50241D3CA00038FA20 /* MD5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5827C2D241D3C9F0038FA20 /* MD5.cpp */; };
+		E5827C51241D3CA00038FA20 /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5827C2E241D3C9F0038FA20 /* util.cpp */; };
+		E5827C52241D3CA00038FA20 /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5827C2E241D3C9F0038FA20 /* util.cpp */; };
+		E5827C53241D3CA00038FA20 /* TLV.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5827C30241D3C9F0038FA20 /* TLV.cpp */; };
+		E5827C54241D3CA00038FA20 /* TLV.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5827C30241D3C9F0038FA20 /* TLV.cpp */; };
+		E5827C55241D3CA00038FA20 /* include in Resources */ = {isa = PBXBuildFile; fileRef = E5827C32241D3C9F0038FA20 /* include */; };
+		E5827C56241D3CA00038FA20 /* include in Resources */ = {isa = PBXBuildFile; fileRef = E5827C32241D3C9F0038FA20 /* include */; };
+		E5827C57241D3CA00038FA20 /* libcurl_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5827C36241D3C9F0038FA20 /* libcurl_iOS.a */; };
+		E5827C58241D3CA00038FA20 /* libcurl_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5827C36241D3C9F0038FA20 /* libcurl_iOS.a */; };
+		E5827C59241D3CA00038FA20 /* RSA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5827C38241D3C9F0038FA20 /* RSA.cpp */; };
+		E5827C5A241D3CA00038FA20 /* RSA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5827C38241D3C9F0038FA20 /* RSA.cpp */; };
+		E5827C5D241D3F580038FA20 /* libz.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E5827C5C241D3F4A0038FA20 /* libz.1.tbd */; };
+		E5827C64241D45EE0038FA20 /* CieModule.m in Sources */ = {isa = PBXBuildFile; fileRef = E5827C63241D45EE0038FA20 /* CieModule.m */; };
+		E5827C65241D45EE0038FA20 /* CieModule.m in Sources */ = {isa = PBXBuildFile; fileRef = E5827C63241D45EE0038FA20 /* CieModule.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		00E356F41AD99517003FC87E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
+			remoteInfo = iocieiossdk;
+		};
+		2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
+			remoteInfo = "iocieiossdk-tvOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
+		00E356EE1AD99517003FC87E /* iocieiossdkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iocieiossdkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* iocieiossdkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iocieiossdkTests.m; sourceTree = "<group>"; };
+		047158E7A33B48B982B1FDC0 /* libPods-iocieiossdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iocieiossdk.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		08556F1CE7D54A3B1B03F5D0 /* Pods-iocieiossdk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iocieiossdk.release.xcconfig"; path = "Target Support Files/Pods-iocieiossdk/Pods-iocieiossdk.release.xcconfig"; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* iocieiossdk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iocieiossdk.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = iocieiossdk/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = iocieiossdk/AppDelegate.m; sourceTree = "<group>"; };
+		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = iocieiossdk/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = iocieiossdk/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = iocieiossdk/main.m; sourceTree = "<group>"; };
+		2D02E47B1E0B4A5D006451C7 /* iocieiossdk-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iocieiossdk-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E4901E0B4A5D006451C7 /* iocieiossdk-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iocieiossdk-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EBF18ADDB7837722CA9E9DE /* libPods-iocieiossdk-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iocieiossdk-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		65AC9B9DE3ADC01EDCD4F057 /* Pods-iocieiossdkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iocieiossdkTests.debug.xcconfig"; path = "Target Support Files/Pods-iocieiossdkTests/Pods-iocieiossdkTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6993D844457BE9B99BE089CB /* Pods-iocieiossdk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iocieiossdk.debug.xcconfig"; path = "Target Support Files/Pods-iocieiossdk/Pods-iocieiossdk.debug.xcconfig"; sourceTree = "<group>"; };
+		6C6486688300C1A4212C1F18 /* Pods-iocieiossdk-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iocieiossdk-tvOS.release.xcconfig"; path = "Target Support Files/Pods-iocieiossdk-tvOS/Pods-iocieiossdk-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		7B92395237175EDBB447B22A /* libPods-iocieiossdk-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iocieiossdk-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E4123C745CDEBF9E7CD75BE /* Pods-iocieiossdk-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iocieiossdk-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-iocieiossdk-tvOSTests/Pods-iocieiossdk-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		98787650AFFFE2D3886A8456 /* Pods-iocieiossdk-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iocieiossdk-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-iocieiossdk-tvOSTests/Pods-iocieiossdk-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A198EB6A12762DE4BF54E20F /* libPods-iocieiossdkTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iocieiossdkTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B41C25EA393C06F27388C516 /* Pods-iocieiossdkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iocieiossdkTests.release.xcconfig"; path = "Target Support Files/Pods-iocieiossdkTests/Pods-iocieiossdkTests.release.xcconfig"; sourceTree = "<group>"; };
+		E0DF9AA21F741D13FAA9C59B /* Pods-iocieiossdk-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iocieiossdk-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-iocieiossdk-tvOS/Pods-iocieiossdk-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		E5827BEF241D3C4B0038FA20 /* Array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Array.h; path = iocieiossdk/Array.h; sourceTree = "<group>"; };
+		E5827BF0241D3C4B0038FA20 /* Array.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Array.cpp; path = iocieiossdk/Array.cpp; sourceTree = "<group>"; };
+		E5827BF1241D3C4B0038FA20 /* ASNParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASNParser.h; path = iocieiossdk/ASNParser.h; sourceTree = "<group>"; };
+		E5827BF2241D3C4B0038FA20 /* CIEEngineHelper.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = CIEEngineHelper.c; path = iocieiossdk/CIEEngineHelper.c; sourceTree = "<group>"; };
+		E5827BF3241D3C4B0038FA20 /* Base64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Base64.cpp; path = iocieiossdk/Base64.cpp; sourceTree = "<group>"; };
+		E5827BF4241D3C4B0038FA20 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Base64.h; path = iocieiossdk/Base64.h; sourceTree = "<group>"; };
+		E5827BF5241D3C4B0038FA20 /* CIEEngine.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = CIEEngine.c; path = iocieiossdk/CIEEngine.c; sourceTree = "<group>"; };
+		E5827BF6241D3C4B0038FA20 /* AES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AES.h; path = iocieiossdk/AES.h; sourceTree = "<group>"; };
+		E5827BF7241D3C4B0038FA20 /* CIEEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CIEEngine.h; path = iocieiossdk/CIEEngine.h; sourceTree = "<group>"; };
+		E5827BF8241D3C4B0038FA20 /* ASNParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ASNParser.cpp; path = iocieiossdk/ASNParser.cpp; sourceTree = "<group>"; };
+		E5827BF9241D3C4B0038FA20 /* AES.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AES.cpp; path = iocieiossdk/AES.cpp; sourceTree = "<group>"; };
+		E5827C00241D3C6F0038FA20 /* iocieiossdk-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iocieiossdk-Bridging-Header.h"; sourceTree = "<group>"; };
+		E5827C01241D3C6F0038FA20 /* iocieiossdk-tvOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iocieiossdk-tvOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		E5827C02241D3C6F0038FA20 /* CIETagReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CIETagReader.swift; path = iocieiossdk/CIETagReader.swift; sourceTree = "<group>"; };
+		E5827C03241D3C6F0038FA20 /* ExtAuthKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ExtAuthKey.cpp; path = iocieiossdk/ExtAuthKey.cpp; sourceTree = "<group>"; };
+		E5827C04241D3C6F0038FA20 /* HTTPSConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPSConnection.h; path = iocieiossdk/HTTPSConnection.h; sourceTree = "<group>"; };
+		E5827C05241D3C700038FA20 /* defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = defines.h; path = iocieiossdk/defines.h; sourceTree = "<group>"; };
+		E5827C06241D3C700038FA20 /* CIEEngineHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CIEEngineHelper.h; path = iocieiossdk/CIEEngineHelper.h; sourceTree = "<group>"; };
+		E5827C07241D3C700038FA20 /* DES3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DES3.cpp; path = iocieiossdk/DES3.cpp; sourceTree = "<group>"; };
+		E5827C08241D3C700038FA20 /* HTTPSConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTTPSConnection.m; path = iocieiossdk/HTTPSConnection.m; sourceTree = "<group>"; };
+		E5827C09241D3C700038FA20 /* IAS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IAS.h; path = iocieiossdk/IAS.h; sourceTree = "<group>"; };
+		E5827C0A241D3C700038FA20 /* DES3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DES3.h; path = iocieiossdk/DES3.h; sourceTree = "<group>"; };
+		E5827C0B241D3C700038FA20 /* ErrorHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ErrorHelper.swift; path = iocieiossdk/ErrorHelper.swift; sourceTree = "<group>"; };
+		E5827C0C241D3C700038FA20 /* CryptoUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CryptoUtil.h; path = iocieiossdk/CryptoUtil.h; sourceTree = "<group>"; };
+		E5827C0D241D3C700038FA20 /* CIEIDSdk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CIEIDSdk.swift; path = iocieiossdk/CIEIDSdk.swift; sourceTree = "<group>"; };
+		E5827C0E241D3C700038FA20 /* IAS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = IAS.mm; path = iocieiossdk/IAS.mm; sourceTree = "<group>"; };
+		E5827C1D241D3C9D0038FA20 /* SHA1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SHA1.cpp; path = iocieiossdk/SHA1.cpp; sourceTree = "<group>"; };
+		E5827C1E241D3C9E0038FA20 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = iocieiossdk/libssl.a; sourceTree = "<group>"; };
+		E5827C1F241D3C9E0038FA20 /* UtilException.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UtilException.cpp; path = iocieiossdk/UtilException.cpp; sourceTree = "<group>"; };
+		E5827C20241D3C9E0038FA20 /* MAC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MAC.h; path = iocieiossdk/MAC.h; sourceTree = "<group>"; };
+		E5827C21241D3C9E0038FA20 /* MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MD5.h; path = iocieiossdk/MD5.h; sourceTree = "<group>"; };
+		E5827C22241D3C9E0038FA20 /* MAC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MAC.cpp; path = iocieiossdk/MAC.cpp; sourceTree = "<group>"; };
+		E5827C23241D3C9E0038FA20 /* RSA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RSA.h; path = iocieiossdk/RSA.h; sourceTree = "<group>"; };
+		E5827C24241D3C9E0038FA20 /* libnghttp2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libnghttp2.a; path = iocieiossdk/libnghttp2.a; sourceTree = "<group>"; };
+		E5827C25241D3C9E0038FA20 /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Logging.swift; path = iocieiossdk/Logging.swift; sourceTree = "<group>"; };
+		E5827C26241D3C9E0038FA20 /* wintypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = wintypes.h; path = iocieiossdk/wintypes.h; sourceTree = "<group>"; };
+		E5827C27241D3C9E0038FA20 /* SHA256.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SHA256.cpp; path = iocieiossdk/SHA256.cpp; sourceTree = "<group>"; };
+		E5827C28241D3C9E0038FA20 /* Token.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Token.mm; path = iocieiossdk/Token.mm; sourceTree = "<group>"; };
+		E5827C29241D3C9E0038FA20 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Token.swift; path = iocieiossdk/Token.swift; sourceTree = "<group>"; };
+		E5827C2A241D3C9F0038FA20 /* SHA512.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SHA512.cpp; path = iocieiossdk/SHA512.cpp; sourceTree = "<group>"; };
+		E5827C2B241D3C9F0038FA20 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = iocieiossdk/libcrypto.a; sourceTree = "<group>"; };
+		E5827C2C241D3C9F0038FA20 /* TLV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TLV.h; path = iocieiossdk/TLV.h; sourceTree = "<group>"; };
+		E5827C2D241D3C9F0038FA20 /* MD5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MD5.cpp; path = iocieiossdk/MD5.cpp; sourceTree = "<group>"; };
+		E5827C2E241D3C9F0038FA20 /* util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = util.cpp; path = iocieiossdk/util.cpp; sourceTree = "<group>"; };
+		E5827C2F241D3C9F0038FA20 /* sha512.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sha512.h; path = iocieiossdk/sha512.h; sourceTree = "<group>"; };
+		E5827C30241D3C9F0038FA20 /* TLV.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TLV.cpp; path = iocieiossdk/TLV.cpp; sourceTree = "<group>"; };
+		E5827C31241D3C9F0038FA20 /* sha256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sha256.h; path = iocieiossdk/sha256.h; sourceTree = "<group>"; };
+		E5827C32241D3C9F0038FA20 /* include */ = {isa = PBXFileReference; lastKnownFileType = folder; name = include; path = iocieiossdk/include; sourceTree = "<group>"; };
+		E5827C33241D3C9F0038FA20 /* SHA1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHA1.h; path = iocieiossdk/SHA1.h; sourceTree = "<group>"; };
+		E5827C34241D3C9F0038FA20 /* util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = util.h; path = iocieiossdk/util.h; sourceTree = "<group>"; };
+		E5827C35241D3C9F0038FA20 /* Token.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Token.h; path = iocieiossdk/Token.h; sourceTree = "<group>"; };
+		E5827C36241D3C9F0038FA20 /* libcurl_iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl_iOS.a; path = iocieiossdk/libcurl_iOS.a; sourceTree = "<group>"; };
+		E5827C37241D3C9F0038FA20 /* UtilException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UtilException.h; path = iocieiossdk/UtilException.h; sourceTree = "<group>"; };
+		E5827C38241D3C9F0038FA20 /* RSA.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RSA.cpp; path = iocieiossdk/RSA.cpp; sourceTree = "<group>"; };
+		E5827C5B241D3CE10038FA20 /* iocieiossdk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = iocieiossdk.entitlements; path = iocieiossdk/iocieiossdk.entitlements; sourceTree = "<group>"; };
+		E5827C5C241D3F4A0038FA20 /* libz.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.tbd; path = usr/lib/libz.1.tbd; sourceTree = SDKROOT; };
+		E5827C5E241D3F640038FA20 /* libz.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.tbd; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS13.2.sdk/usr/lib/libz.1.tbd; sourceTree = DEVELOPER_DIR; };
+		E5827C62241D45EE0038FA20 /* CieModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CieModule.h; path = iocieiossdk/CieModule.h; sourceTree = "<group>"; };
+		E5827C63241D45EE0038FA20 /* CieModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CieModule.m; path = iocieiossdk/CieModule.m; sourceTree = "<group>"; };
+		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		00E356EB1AD99517003FC87E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60DCE9A7880DD9AE24CF6A86 /* libPods-iocieiossdkTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F8C1A680F5B00A75B9A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5827C5D241D3F580038FA20 /* libz.1.tbd in Frameworks */,
+				E5827C3B241D3CA00038FA20 /* libssl.a in Frameworks */,
+				E5827C41241D3CA00038FA20 /* libnghttp2.a in Frameworks */,
+				E5827C57241D3CA00038FA20 /* libcurl_iOS.a in Frameworks */,
+				E5827C4D241D3CA00038FA20 /* libcrypto.a in Frameworks */,
+				2752F4854E373D0CF424114B /* libPods-iocieiossdk.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D02E4781E0B4A5D006451C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5827C3C241D3CA00038FA20 /* libssl.a in Frameworks */,
+				E5827C42241D3CA00038FA20 /* libnghttp2.a in Frameworks */,
+				E5827C58241D3CA00038FA20 /* libcurl_iOS.a in Frameworks */,
+				E5827C4E241D3CA00038FA20 /* libcrypto.a in Frameworks */,
+				5E432340DBB30FE49A5B2B99 /* libPods-iocieiossdk-tvOS.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D02E48D1E0B4A5D006451C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1A2C3C80E414E7B930FE6CE /* libPods-iocieiossdk-tvOSTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		00E356EF1AD99517003FC87E /* iocieiossdkTests */ = {
+			isa = PBXGroup;
+			children = (
+				00E356F21AD99517003FC87E /* iocieiossdkTests.m */,
+				00E356F01AD99517003FC87E /* Supporting Files */,
+			);
+			path = iocieiossdkTests;
+			sourceTree = "<group>";
+		};
+		00E356F01AD99517003FC87E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				00E356F11AD99517003FC87E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		13B07FAE1A68108700A75B9A /* iocieiossdk */ = {
+			isa = PBXGroup;
+			children = (
+				E5827C5B241D3CE10038FA20 /* iocieiossdk.entitlements */,
+				E5827C32241D3C9F0038FA20 /* include */,
+				E5827C2B241D3C9F0038FA20 /* libcrypto.a */,
+				E5827C36241D3C9F0038FA20 /* libcurl_iOS.a */,
+				E5827C24241D3C9E0038FA20 /* libnghttp2.a */,
+				E5827C1E241D3C9E0038FA20 /* libssl.a */,
+				E5827C25241D3C9E0038FA20 /* Logging.swift */,
+				E5827C22241D3C9E0038FA20 /* MAC.cpp */,
+				E5827C20241D3C9E0038FA20 /* MAC.h */,
+				E5827C2D241D3C9F0038FA20 /* MD5.cpp */,
+				E5827C21241D3C9E0038FA20 /* MD5.h */,
+				E5827C38241D3C9F0038FA20 /* RSA.cpp */,
+				E5827C23241D3C9E0038FA20 /* RSA.h */,
+				E5827C1D241D3C9D0038FA20 /* SHA1.cpp */,
+				E5827C33241D3C9F0038FA20 /* SHA1.h */,
+				E5827C27241D3C9E0038FA20 /* SHA256.cpp */,
+				E5827C31241D3C9F0038FA20 /* sha256.h */,
+				E5827C2A241D3C9F0038FA20 /* SHA512.cpp */,
+				E5827C2F241D3C9F0038FA20 /* sha512.h */,
+				E5827C30241D3C9F0038FA20 /* TLV.cpp */,
+				E5827C2C241D3C9F0038FA20 /* TLV.h */,
+				E5827C35241D3C9F0038FA20 /* Token.h */,
+				E5827C28241D3C9E0038FA20 /* Token.mm */,
+				E5827C29241D3C9E0038FA20 /* Token.swift */,
+				E5827C2E241D3C9F0038FA20 /* util.cpp */,
+				E5827C34241D3C9F0038FA20 /* util.h */,
+				E5827C1F241D3C9E0038FA20 /* UtilException.cpp */,
+				E5827C37241D3C9F0038FA20 /* UtilException.h */,
+				E5827C26241D3C9E0038FA20 /* wintypes.h */,
+				E5827C06241D3C700038FA20 /* CIEEngineHelper.h */,
+				E5827C0D241D3C700038FA20 /* CIEIDSdk.swift */,
+				E5827C02241D3C6F0038FA20 /* CIETagReader.swift */,
+				E5827C0C241D3C700038FA20 /* CryptoUtil.h */,
+				E5827C05241D3C700038FA20 /* defines.h */,
+				E5827C07241D3C700038FA20 /* DES3.cpp */,
+				E5827C0A241D3C700038FA20 /* DES3.h */,
+				E5827C0B241D3C700038FA20 /* ErrorHelper.swift */,
+				E5827C03241D3C6F0038FA20 /* ExtAuthKey.cpp */,
+				E5827C04241D3C6F0038FA20 /* HTTPSConnection.h */,
+				E5827C08241D3C700038FA20 /* HTTPSConnection.m */,
+				E5827C09241D3C700038FA20 /* IAS.h */,
+				E5827C0E241D3C700038FA20 /* IAS.mm */,
+				E5827BF9241D3C4B0038FA20 /* AES.cpp */,
+				E5827BF6241D3C4B0038FA20 /* AES.h */,
+				E5827BF0241D3C4B0038FA20 /* Array.cpp */,
+				E5827BEF241D3C4B0038FA20 /* Array.h */,
+				E5827BF8241D3C4B0038FA20 /* ASNParser.cpp */,
+				E5827BF1241D3C4B0038FA20 /* ASNParser.h */,
+				E5827BF3241D3C4B0038FA20 /* Base64.cpp */,
+				E5827BF4241D3C4B0038FA20 /* Base64.h */,
+				E5827BF5241D3C4B0038FA20 /* CIEEngine.c */,
+				E5827BF7241D3C4B0038FA20 /* CIEEngine.h */,
+				E5827BF2241D3C4B0038FA20 /* CIEEngineHelper.c */,
+				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
+				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
+				13B07FB01A68108700A75B9A /* AppDelegate.m */,
+				13B07FB51A68108700A75B9A /* Images.xcassets */,
+				13B07FB61A68108700A75B9A /* Info.plist */,
+				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
+				13B07FB71A68108700A75B9A /* main.m */,
+				E5827C00241D3C6F0038FA20 /* iocieiossdk-Bridging-Header.h */,
+				E5827C01241D3C6F0038FA20 /* iocieiossdk-tvOS-Bridging-Header.h */,
+				E5827C62241D45EE0038FA20 /* CieModule.h */,
+				E5827C63241D45EE0038FA20 /* CieModule.m */,
+			);
+			name = iocieiossdk;
+			sourceTree = "<group>";
+		};
+		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E5827C5C241D3F4A0038FA20 /* libz.1.tbd */,
+				E5827C5E241D3F640038FA20 /* libz.1.tbd */,
+				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
+				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
+				047158E7A33B48B982B1FDC0 /* libPods-iocieiossdk.a */,
+				4EBF18ADDB7837722CA9E9DE /* libPods-iocieiossdk-tvOS.a */,
+				7B92395237175EDBB447B22A /* libPods-iocieiossdk-tvOSTests.a */,
+				A198EB6A12762DE4BF54E20F /* libPods-iocieiossdkTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5B155354E9C0FD7F71083E44 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6993D844457BE9B99BE089CB /* Pods-iocieiossdk.debug.xcconfig */,
+				08556F1CE7D54A3B1B03F5D0 /* Pods-iocieiossdk.release.xcconfig */,
+				E0DF9AA21F741D13FAA9C59B /* Pods-iocieiossdk-tvOS.debug.xcconfig */,
+				6C6486688300C1A4212C1F18 /* Pods-iocieiossdk-tvOS.release.xcconfig */,
+				98787650AFFFE2D3886A8456 /* Pods-iocieiossdk-tvOSTests.debug.xcconfig */,
+				7E4123C745CDEBF9E7CD75BE /* Pods-iocieiossdk-tvOSTests.release.xcconfig */,
+				65AC9B9DE3ADC01EDCD4F057 /* Pods-iocieiossdkTests.debug.xcconfig */,
+				B41C25EA393C06F27388C516 /* Pods-iocieiossdkTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		83CBB9F61A601CBA00E9B192 = {
+			isa = PBXGroup;
+			children = (
+				13B07FAE1A68108700A75B9A /* iocieiossdk */,
+				832341AE1AAA6A7D00B99B32 /* Libraries */,
+				00E356EF1AD99517003FC87E /* iocieiossdkTests */,
+				83CBBA001A601CBA00E9B192 /* Products */,
+				2D16E6871FA4F8E400B85C8A /* Frameworks */,
+				5B155354E9C0FD7F71083E44 /* Pods */,
+			);
+			indentWidth = 2;
+			sourceTree = "<group>";
+			tabWidth = 2;
+			usesTabs = 0;
+		};
+		83CBBA001A601CBA00E9B192 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				13B07F961A680F5B00A75B9A /* iocieiossdk.app */,
+				00E356EE1AD99517003FC87E /* iocieiossdkTests.xctest */,
+				2D02E47B1E0B4A5D006451C7 /* iocieiossdk-tvOS.app */,
+				2D02E4901E0B4A5D006451C7 /* iocieiossdk-tvOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		00E356ED1AD99517003FC87E /* iocieiossdkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "iocieiossdkTests" */;
+			buildPhases = (
+				29227FBBED3454713707751E /* [CP] Check Pods Manifest.lock */,
+				00E356EA1AD99517003FC87E /* Sources */,
+				00E356EB1AD99517003FC87E /* Frameworks */,
+				00E356EC1AD99517003FC87E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				00E356F51AD99517003FC87E /* PBXTargetDependency */,
+			);
+			name = iocieiossdkTests;
+			productName = iocieiossdkTests;
+			productReference = 00E356EE1AD99517003FC87E /* iocieiossdkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		13B07F861A680F5B00A75B9A /* iocieiossdk */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "iocieiossdk" */;
+			buildPhases = (
+				2C340966BC209233BA96DD94 /* [CP] Check Pods Manifest.lock */,
+				FD10A7F022414F080027D42C /* Start Packager */,
+				13B07F871A680F5B00A75B9A /* Sources */,
+				13B07F8C1A680F5B00A75B9A /* Frameworks */,
+				13B07F8E1A680F5B00A75B9A /* Resources */,
+				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iocieiossdk;
+			productName = iocieiossdk;
+			productReference = 13B07F961A680F5B00A75B9A /* iocieiossdk.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2D02E47A1E0B4A5D006451C7 /* iocieiossdk-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "iocieiossdk-tvOS" */;
+			buildPhases = (
+				AD79F68631CEC084D650FA9A /* [CP] Check Pods Manifest.lock */,
+				FD10A7F122414F3F0027D42C /* Start Packager */,
+				2D02E4771E0B4A5D006451C7 /* Sources */,
+				2D02E4781E0B4A5D006451C7 /* Frameworks */,
+				2D02E4791E0B4A5D006451C7 /* Resources */,
+				2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "iocieiossdk-tvOS";
+			productName = "iocieiossdk-tvOS";
+			productReference = 2D02E47B1E0B4A5D006451C7 /* iocieiossdk-tvOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2D02E48F1E0B4A5D006451C7 /* iocieiossdk-tvOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "iocieiossdk-tvOSTests" */;
+			buildPhases = (
+				BEF0442FDE28FBF66C13AE4A /* [CP] Check Pods Manifest.lock */,
+				2D02E48C1E0B4A5D006451C7 /* Sources */,
+				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
+				2D02E48E1E0B4A5D006451C7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */,
+			);
+			name = "iocieiossdk-tvOSTests";
+			productName = "iocieiossdk-tvOSTests";
+			productReference = 2D02E4901E0B4A5D006451C7 /* iocieiossdk-tvOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		83CBB9F71A601CBA00E9B192 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = Facebook;
+				TargetAttributes = {
+					00E356ED1AD99517003FC87E = {
+						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = UV5M7CH7SB;
+						TestTargetID = 13B07F861A680F5B00A75B9A;
+					};
+					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = UV5M7CH7SB;
+						LastSwiftMigration = 1130;
+					};
+					2D02E47A1E0B4A5D006451C7 = {
+						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 1130;
+						ProvisioningStyle = Automatic;
+					};
+					2D02E48F1E0B4A5D006451C7 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 2D02E47A1E0B4A5D006451C7;
+					};
+				};
+			};
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "iocieiossdk" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				en,
+				Base,
+			);
+			mainGroup = 83CBB9F61A601CBA00E9B192;
+			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				13B07F861A680F5B00A75B9A /* iocieiossdk */,
+				00E356ED1AD99517003FC87E /* iocieiossdkTests */,
+				2D02E47A1E0B4A5D006451C7 /* iocieiossdk-tvOS */,
+				2D02E48F1E0B4A5D006451C7 /* iocieiossdk-tvOSTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		00E356EC1AD99517003FC87E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F8E1A680F5B00A75B9A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5827C55241D3CA00038FA20 /* include in Resources */,
+				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D02E4791E0B4A5D006451C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */,
+				E5827C56241D3CA00038FA20 /* include in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D02E48E1E0B4A5D006451C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle React Native code and images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		29227FBBED3454713707751E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iocieiossdkTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2C340966BC209233BA96DD94 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iocieiossdk-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle React Native Code And Images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		AD79F68631CEC084D650FA9A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iocieiossdk-tvOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BEF0442FDE28FBF66C13AE4A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iocieiossdk-tvOSTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FD10A7F022414F080027D42C /* Start Packager */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Start Packager";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FD10A7F122414F3F0027D42C /* Start Packager */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Start Packager";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		00E356EA1AD99517003FC87E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00E356F31AD99517003FC87E /* iocieiossdkTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F871A680F5B00A75B9A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5827C59241D3CA00038FA20 /* RSA.cpp in Sources */,
+				E5827C45241D3CA00038FA20 /* SHA256.cpp in Sources */,
+				E5827C1B241D3C700038FA20 /* IAS.mm in Sources */,
+				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				E5827C43241D3CA00038FA20 /* Logging.swift in Sources */,
+				E5827C53241D3CA00038FA20 /* TLV.cpp in Sources */,
+				E5827BFF241D3C4B0038FA20 /* AES.cpp in Sources */,
+				E5827BFD241D3C4B0038FA20 /* CIEEngine.c in Sources */,
+				E5827C4F241D3CA00038FA20 /* MD5.cpp in Sources */,
+				E5827C19241D3C700038FA20 /* CIEIDSdk.swift in Sources */,
+				E5827C49241D3CA00038FA20 /* Token.swift in Sources */,
+				E5827C4B241D3CA00038FA20 /* SHA512.cpp in Sources */,
+				E5827BFE241D3C4B0038FA20 /* ASNParser.cpp in Sources */,
+				E5827C39241D3CA00038FA20 /* SHA1.cpp in Sources */,
+				E5827C13241D3C700038FA20 /* DES3.cpp in Sources */,
+				E5827BFB241D3C4B0038FA20 /* CIEEngineHelper.c in Sources */,
+				E5827C3F241D3CA00038FA20 /* MAC.cpp in Sources */,
+				E5827C47241D3CA00038FA20 /* Token.mm in Sources */,
+				E5827C11241D3C700038FA20 /* ExtAuthKey.cpp in Sources */,
+				E5827C15241D3C700038FA20 /* HTTPSConnection.m in Sources */,
+				E5827BFC241D3C4B0038FA20 /* Base64.cpp in Sources */,
+				E5827C64241D45EE0038FA20 /* CieModule.m in Sources */,
+				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				E5827C0F241D3C700038FA20 /* CIETagReader.swift in Sources */,
+				E5827BFA241D3C4B0038FA20 /* Array.cpp in Sources */,
+				E5827C3D241D3CA00038FA20 /* UtilException.cpp in Sources */,
+				E5827C51241D3CA00038FA20 /* util.cpp in Sources */,
+				E5827C17241D3C700038FA20 /* ErrorHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D02E4771E0B4A5D006451C7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */,
+				E5827C44241D3CA00038FA20 /* Logging.swift in Sources */,
+				E5827C1A241D3C700038FA20 /* CIEIDSdk.swift in Sources */,
+				E5827C16241D3C700038FA20 /* HTTPSConnection.m in Sources */,
+				E5827C4C241D3CA00038FA20 /* SHA512.cpp in Sources */,
+				E5827C46241D3CA00038FA20 /* SHA256.cpp in Sources */,
+				E5827C54241D3CA00038FA20 /* TLV.cpp in Sources */,
+				E5827C10241D3C700038FA20 /* CIETagReader.swift in Sources */,
+				E5827C48241D3CA00038FA20 /* Token.mm in Sources */,
+				E5827C4A241D3CA00038FA20 /* Token.swift in Sources */,
+				E5827C3A241D3CA00038FA20 /* SHA1.cpp in Sources */,
+				E5827C3E241D3CA00038FA20 /* UtilException.cpp in Sources */,
+				2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */,
+				E5827C50241D3CA00038FA20 /* MD5.cpp in Sources */,
+				E5827C52241D3CA00038FA20 /* util.cpp in Sources */,
+				E5827C65241D45EE0038FA20 /* CieModule.m in Sources */,
+				E5827C18241D3C700038FA20 /* ErrorHelper.swift in Sources */,
+				E5827C1C241D3C700038FA20 /* IAS.mm in Sources */,
+				E5827C40241D3CA00038FA20 /* MAC.cpp in Sources */,
+				E5827C5A241D3CA00038FA20 /* RSA.cpp in Sources */,
+				E5827C12241D3C700038FA20 /* ExtAuthKey.cpp in Sources */,
+				E5827C14241D3C700038FA20 /* DES3.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D02E48C1E0B4A5D006451C7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DCD954D1E0B4F2C00145EB5 /* iocieiossdkTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 13B07F861A680F5B00A75B9A /* iocieiossdk */;
+			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
+		};
+		2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2D02E47A1E0B4A5D006451C7 /* iocieiossdk-tvOS */;
+			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		13B07FB11A68108700A75B9A /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				13B07FB21A68108700A75B9A /* Base */,
+			);
+			name = LaunchScreen.xib;
+			path = iocieiossdk;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		00E356F61AD99517003FC87E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65AC9B9DE3ADC01EDCD4F057 /* Pods-iocieiossdkTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = UV5M7CH7SB;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = iocieiossdkTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+					"$(inherited)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iocieiossdk.app/iocieiossdk";
+			};
+			name = Debug;
+		};
+		00E356F71AD99517003FC87E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B41C25EA393C06F27388C516 /* Pods-iocieiossdkTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = UV5M7CH7SB;
+				INFOPLIST_FILE = iocieiossdkTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+					"$(inherited)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iocieiossdk.app/iocieiossdk";
+			};
+			name = Release;
+		};
+		13B07F941A680F5B00A75B9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6993D844457BE9B99BE089CB /* Pods-iocieiossdk.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = iocieiossdk/iocieiossdk.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = UV5M7CH7SB;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/DoubleConversion\"",
+					"\"${PODS_ROOT}/Headers/Public/FBLazyVector\"",
+					"\"${PODS_ROOT}/Headers/Public/FBReactNativeSpec\"",
+					"\"${PODS_ROOT}/Headers/Public/RCTRequired\"",
+					"\"${PODS_ROOT}/Headers/Public/RCTTypeSafety\"",
+					"\"${PODS_ROOT}/Headers/Public/React-Core\"",
+					"\"${PODS_ROOT}/Headers/Public/React-RCTBlob\"",
+					"\"${PODS_ROOT}/Headers/Public/React-RCTText\"",
+					"\"${PODS_ROOT}/Headers/Public/React-cxxreact\"",
+					"\"${PODS_ROOT}/Headers/Public/React-jsi\"",
+					"\"${PODS_ROOT}/Headers/Public/React-jsiexecutor\"",
+					"\"${PODS_ROOT}/Headers/Public/React-jsinspector\"",
+					"\"${PODS_ROOT}/Headers/Public/ReactCommon\"",
+					"\"${PODS_ROOT}/Headers/Public/Yoga\"",
+					"\"${PODS_ROOT}/Headers/Public/glog\"",
+					"\"$(PODS_ROOT)/Headers/Private/React-Core\"",
+					"$(PROJECT_DIR)/iocieiossdk/include",
+				);
+				INFOPLIST_FILE = iocieiossdk/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/iocieiossdk",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.cie.sdk;
+				PRODUCT_NAME = iocieiossdk;
+				SWIFT_OBJC_BRIDGING_HEADER = "iocieiossdk-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		13B07F951A680F5B00A75B9A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 08556F1CE7D54A3B1B03F5D0 /* Pods-iocieiossdk.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = iocieiossdk/iocieiossdk.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UV5M7CH7SB;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/DoubleConversion\"",
+					"\"${PODS_ROOT}/Headers/Public/FBLazyVector\"",
+					"\"${PODS_ROOT}/Headers/Public/FBReactNativeSpec\"",
+					"\"${PODS_ROOT}/Headers/Public/RCTRequired\"",
+					"\"${PODS_ROOT}/Headers/Public/RCTTypeSafety\"",
+					"\"${PODS_ROOT}/Headers/Public/React-Core\"",
+					"\"${PODS_ROOT}/Headers/Public/React-RCTBlob\"",
+					"\"${PODS_ROOT}/Headers/Public/React-RCTText\"",
+					"\"${PODS_ROOT}/Headers/Public/React-cxxreact\"",
+					"\"${PODS_ROOT}/Headers/Public/React-jsi\"",
+					"\"${PODS_ROOT}/Headers/Public/React-jsiexecutor\"",
+					"\"${PODS_ROOT}/Headers/Public/React-jsinspector\"",
+					"\"${PODS_ROOT}/Headers/Public/ReactCommon\"",
+					"\"${PODS_ROOT}/Headers/Public/Yoga\"",
+					"\"${PODS_ROOT}/Headers/Public/glog\"",
+					"\"$(PODS_ROOT)/Headers/Private/React-Core\"",
+					"$(PROJECT_DIR)/iocieiossdk/include",
+				);
+				INFOPLIST_FILE = iocieiossdk/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/iocieiossdk",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.cie.sdk;
+				PRODUCT_NAME = iocieiossdk;
+				SWIFT_OBJC_BRIDGING_HEADER = "iocieiossdk-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		2D02E4971E0B4A5E006451C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0DF9AA21F741D13FAA9C59B /* Pods-iocieiossdk-tvOS.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "iocieiossdk-tvOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/iocieiossdk",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.iocieiossdk-tvOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_OBJC_BRIDGING_HEADER = "iocieiossdk-tvOS-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+			};
+			name = Debug;
+		};
+		2D02E4981E0B4A5E006451C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6C6486688300C1A4212C1F18 /* Pods-iocieiossdk-tvOS.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "iocieiossdk-tvOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/iocieiossdk",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.iocieiossdk-tvOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_OBJC_BRIDGING_HEADER = "iocieiossdk-tvOS-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+			};
+			name = Release;
+		};
+		2D02E4991E0B4A5E006451C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 98787650AFFFE2D3886A8456 /* Pods-iocieiossdk-tvOSTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "iocieiossdk-tvOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.iocieiossdk-tvOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iocieiossdk-tvOS.app/iocieiossdk-tvOS";
+				TVOS_DEPLOYMENT_TARGET = 10.1;
+			};
+			name = Debug;
+		};
+		2D02E49A1E0B4A5E006451C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E4123C745CDEBF9E7CD75BE /* Pods-iocieiossdk-tvOSTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "iocieiossdk-tvOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.iocieiossdk-tvOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iocieiossdk-tvOS.app/iocieiossdk-tvOS";
+				TVOS_DEPLOYMENT_TARGET = 10.1;
+			};
+			name = Release;
+		};
+		83CBBA201A601CBA00E9B192 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		83CBBA211A601CBA00E9B192 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "iocieiossdkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00E356F61AD99517003FC87E /* Debug */,
+				00E356F71AD99517003FC87E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "iocieiossdk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13B07F941A680F5B00A75B9A /* Debug */,
+				13B07F951A680F5B00A75B9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "iocieiossdk-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D02E4971E0B4A5E006451C7 /* Debug */,
+				2D02E4981E0B4A5E006451C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "iocieiossdk-tvOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D02E4991E0B4A5E006451C7 /* Debug */,
+				2D02E49A1E0B4A5E006451C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "iocieiossdk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83CBBA201A601CBA00E9B192 /* Debug */,
+				83CBBA211A601CBA00E9B192 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 83CBB9F71A601CBA00E9B192 /* Project object */;
+}
