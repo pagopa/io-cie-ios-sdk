@@ -64,6 +64,7 @@ public class ErrorHelper {
                    0x87:"Non Volatile memory not available",
                    0x88:"Key number not valid",
                    0x89:"Key length is not correct",
+                   0xC0:"PIN locked",
                    0xC1:"Wrong PIN, 1 attempt left",
                    0xC2:"Wrong PIN, 2 attempts left",
                    0xC:"Counter provided by X (valued from 0 to 15) (exact meaning depending on the command)"],
@@ -98,10 +99,6 @@ public class ErrorHelper {
             0x6F: [0x00:"No precise diagnosis"],
             0x90: [0x00:"Success"], //No further qualification
             0xFF: [0x01:"Invalid CIE Certificate",
-                   0xFB:"Nuovo PIN e vecchio PIN non devono essere uguali",
-                   0xFC:"I PIN non corrispondono",
-                   0xFD:"Il PIN deve essere composto da 8 numeri",
-                   0xFE:"Il nuovo PIN non deve avere cifre uguali o consecutive",
                    0xFF:"Transmission Error"]
         ]
         

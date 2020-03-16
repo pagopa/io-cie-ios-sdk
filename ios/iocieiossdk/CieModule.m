@@ -58,17 +58,20 @@ RCT_EXPORT_METHOD(setAuthenticationUrl:(NSString*) url) {
 }
 
 RCT_EXPORT_METHOD(start:(RCTResponseSenderBlock)callback) {
-  [self.cieSDK postWithUrl:self.url pin:self.pin completed:^(uint16_t error, NSString* response) {
   
-    if(error == 0)
-    {
-      [self sendEvent: successChannel eventValue: response];
-    }
-    else
-    {
-      [self sendEvent: eventChannel eventValue: [NSString stringWithFormat:@"Error: %x", error]];
-    }
-  }];
+  dispatch_async(dispatch_get_global_queue(0, 0), ^{
+    [self.cieSDK postWithUrl:self.url pin:self.pin completed:^(uint16_t error, NSString* response) {
+    
+      if(error == 0)
+      {
+        [self sendEvent: successChannel eventValue: response];
+      }
+      else
+      {
+        [self sendEvent: eventChannel eventValue: [NSString stringWithFormat:@"Error: %x", error]];
+      }
+    }];
+  });
   
   callback(@[]);
 }

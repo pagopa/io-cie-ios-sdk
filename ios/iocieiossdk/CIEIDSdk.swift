@@ -85,6 +85,7 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
     public func post(url: String, pin: String, completed: @escaping (UInt16, String?)->() ) {
            self.pin = pin
            self.url = url
+
            self.start(completed: completed)
     }
 
@@ -141,18 +142,18 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
         // print("iso7816Tag identifier \(String(data: self.passportTag!.identifier, encoding: String.Encoding.utf8))")
         //
                       
-      let url = URL(string: self.url!)
-      let value = url!.queryParameters[Constants.KEY_VALUE]
-      let name = url!.queryParameters[Constants.KEY_NAME]
-      let authnRequest = url!.queryParameters[Constants.KEY_AUTHN_REQUEST_STRING]
-      let nextUrl = url!.queryParameters[Constants.KEY_NEXT_UTL]
-      let opText = url!.queryParameters[Constants.KEY_OP_TEXT]
+      let url1 = URL(string: self.url!)
+      let value = url1!.queryParameters[Constants.KEY_VALUE]
+      let name = url1!.queryParameters[Constants.KEY_NAME]
+      let authnRequest = url1!.queryParameters[Constants.KEY_AUTHN_REQUEST_STRING]
+      let nextUrl = url1!.queryParameters[Constants.KEY_NEXT_UTL]
+      let opText = url1!.queryParameters[Constants.KEY_OP_TEXT]
         //let host = appLinkData.host ?: ""
-      let logo = url?.queryParameters[Constants.KEY_LOGO]
+      let logo = url1?.queryParameters[Constants.KEY_LOGO]
         
       let params : Data = NSKeyedArchiver.archivedData(withRootObject: [name:value, Constants.authnRequest:authnRequest, Constants.generaCodice: "1"])
             
-      self.cieTagReader?.post(url: url!.baseURL!.absoluteString, pin: self.pin!, data: params, completed: { (data, error) in
+      self.cieTagReader?.post(url: url1!.baseURL!.absoluteString, pin: self.pin!, data: params, completed: { (data, error) in
             let  session = self.readerSession
             self.readerSession = nil
             session?.invalidate()
