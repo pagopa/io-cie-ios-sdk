@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (UInt16) authenticate;
 - (UInt16) verifyPIN: (NSString*) pin;
 - (UInt16) certificate: (NSMutableData*) certificate;
-- (UInt16) post: (NSString*) url pin: (NSString*) pin certificate: (NSData*) certificate data: ( NSData* _Nullable ) data response: (NSMutableData*) response;
+- (UInt16) post: (NSString*) url pin: (NSString*) pin certificate: (NSData*) certificate data: ( NSString* _Nullable ) data response: (NSMutableData*) response;
 
 - (NSData*) transmit: (NSData*) apdu;
 

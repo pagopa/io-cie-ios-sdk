@@ -2,9 +2,6 @@
 //  PassportReader.swift
 //  NFCTest
 //
-//  Created by Andy Qua on 11/06/2019.
-//  Copyright © 2019 Andy Qua. All rights reserved.
-//
 
 import UIKit
 import CoreNFC
@@ -42,6 +39,11 @@ struct Constants {
     static let KEY_LOGO = "imgUrl"
     static let generaCodice = "generaCodice"
     static let authnRequest = "authnRequest"
+    static let BASE_URL_IDP = "https://idserver.servizicie.interno.gov.it/idp/Authn/SSL/Login2"
+    //PRODUZIONE
+    //"https://idserver.servizicie.interno.gov.it/idp/"
+    //COLLAUDO
+    //"https://idserver.servizicie.interno.gov.it:8443/idp/"
 }
 
 @objc(CIEIDSdk)
@@ -97,6 +99,7 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
         Log.debug( "tagReaderSession:didInvalidateWithError - \(error)" )
         if(self.readerSession != nil)
         {
+          
             self.readerSession = nil
             self.completedHandler(ErrorHelper.TAG_ERROR_SESSION_INVALIDATED, nil)//error.errorTagError(errorDescription: error.localizedDescription))
         }
@@ -142,18 +145,27 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
         // print("iso7816Tag identifier \(String(data: self.passportTag!.identifier, encoding: String.Encoding.utf8))")
         //
                       
-      let url1 = URL(string: self.url!)
-      let value = url1!.queryParameters[Constants.KEY_VALUE]
-      let name = url1!.queryParameters[Constants.KEY_NAME]
-      let authnRequest = url1!.queryParameters[Constants.KEY_AUTHN_REQUEST_STRING]
-      let nextUrl = url1!.queryParameters[Constants.KEY_NEXT_UTL]
-      let opText = url1!.queryParameters[Constants.KEY_OP_TEXT]
-        //let host = appLinkData.host ?: ""
-      let logo = url1?.queryParameters[Constants.KEY_LOGO]
+        print(self.url!)
         
-      let params : Data = NSKeyedArchiver.archivedData(withRootObject: [name:value, Constants.authnRequest:authnRequest, Constants.generaCodice: "1"])
-            
-      self.cieTagReader?.post(url: url1!.baseURL!.absoluteString, pin: self.pin!, data: params, completed: { (data, error) in
+        let url1 = URL(string: self.url!.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
+//        print(url1)
+//        print(url1?.baseURL)
+//        print(url1?.baseURL?.absoluteString)
+        
+      let value = url1!.queryParameters[Constants.KEY_VALUE]!
+      let name = url1!.queryParameters[Constants.KEY_NAME]!
+      let authnRequest = url1!.queryParameters[Constants.KEY_AUTHN_REQUEST_STRING]!
+      let nextUrl = url1!.queryParameters[Constants.KEY_NEXT_UTL]!
+      let opText = url1!.queryParameters[Constants.KEY_OP_TEXT]!
+        //let host = appLinkData.host ?: ""
+      let logo = url1?.queryParameters[Constants.KEY_LOGO]!
+
+      //let params : Data = NSKeyedArchiver.archivedData(withRootObject: [name:value, Constants.authnRequest:authnRequest, Constants.generaCodice: "1"])
+    
+        let params = "\(value)=\(name)&\(Constants.authnRequest)=\(authnRequest)&\(Constants.generaCodice)=1"
+        
+        self.cieTagReader?.post(url: Constants.BASE_URL_IDP, pin: self.pin!, data: params, completed: { (data, error) in
+        //self.cieTagReader?.post(url: self.url!, pin: self.pin!, data: nil, completed: { (data, error) in
             let  session = self.readerSession
             self.readerSession = nil
             session?.invalidate()
@@ -164,18 +176,11 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
               
               print("response: \(response ?? "nil")")
               	
-              let codiceServer = response
+                let codiceServer = String((response?.split(separator: ":")[1])!)
               
-//              val codiceServer =
-//                  idpResponse.body()!!.string().split(":".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[1]
-//              if(!checkCodiceServer(codiceServer)){
-//                  callback?.onEvent(Event(EventError.GENERAL_ERROR))
-//              }
-//
-//              val url =
-//                                         deepLinkInfo.nextUrl + "?" + deepLinkInfo.name + "=" + deepLinkInfo.value + "&login=1&codice=" + codiceServer
+              let newurl = nextUrl + "?" + name + "=" + value + "&login=1&codice=" + codiceServer
 //                                     callback?.onSuccess(url)
-                self.completedHandler(0, codiceServer)
+                self.completedHandler(0, newurl)
             }
             else
             {

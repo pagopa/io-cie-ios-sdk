@@ -2,8 +2,6 @@
 //  TagHandler.swift
 //  NFCTest
 //
-//  Created by Andy Qua on 09/06/2019.
-//  Copyright © 2019 Andy Qua. All rights reserved.
 //
 
 import Foundation
@@ -68,7 +66,7 @@ public class CIETagReader {
         cieToken = CIEToken(nfcToken: nfcToken)
     }
 
-    public func post(url: String, pin: String, data: Data?, completed: @escaping (Data?, UInt16)->() )  {
+    public func post(url: String, pin: String, data: String?, completed: @escaping (Data?, UInt16)->() )  {
         
         let concurrentQueue = DispatchQueue(label: "nfcthread", qos: .userInteractive, attributes: .concurrent)
         

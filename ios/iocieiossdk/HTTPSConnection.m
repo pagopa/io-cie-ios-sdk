@@ -3,7 +3,6 @@
 //  CIESDK
 //
 //  Created by ugo chirico on 29.02.2020.
-//  Copyright © 2020 IPZS. All rights reserved.
 //
 
 #import "HTTPSConnection.h"
@@ -178,7 +177,7 @@ long bio_dump_callback(BIO *bio, int cmd, const char *argp,
     return (ret);
 }
 
-int https_post(char* szUrl, char* szPIN, unsigned char* certificate, size_t certlen, unsigned char* data, size_t length, unsigned char* response, size_t* pLength)
+int https_post(char* szUrl, char* szPIN, unsigned char* certificate, size_t certlen, char* data, size_t length, unsigned char* response, size_t* pLength)
 {
     CURL *curl;
     CURLcode res = CURLE_OK;
@@ -241,20 +240,25 @@ int https_post(char* szUrl, char* szPIN, unsigned char* certificate, size_t cert
         //set POST method
         curl_easy_setopt(curl, CURLOPT_POST, 1);
 
+        printf("\nData %s\n\n", data);
+        
         //give the data you want to post
         curl_easy_setopt(curl, CURLOPT_POSTFIELDS, data);
 
         //give the data lenght
-        curl_easy_setopt(curl, CURLOPT_POSTFIELDSIZE, length);
+        //curl_easy_setopt(curl, CURLOPT_POSTFIELDSIZE, length);
+
         
         // copy data to POST
-        curl_easy_setopt(curl, CURLOPT_COPYPOSTFIELDS, 1L);
+        //curl_easy_setopt(curl, CURLOPT_COPYPOSTFIELDS, 1L);
         
         struct curl_slist *headers = NULL;
             
         /* Remove a header curl would otherwise add by itself */
         headers = curl_slist_append(headers, "User-Agent: Mozilla/5.0");
     
+        headers = curl_slist_append(headers, "Content-Type: application/x-www-form-urlencoded");
+        
         /* set our custom set of headers */
         curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
 
@@ -312,7 +316,7 @@ int https_post(char* szUrl, char* szPIN, unsigned char* certificate, size_t cert
     return self;
 }
 
-- (void) postTo: (NSString*) url withPIN: (NSString*) pin withCertificate: (NSData*) certificate withData: ( NSData* _Nullable ) data  callback: (void(^) (int code, NSData* respData)) callback
+- (void) postTo: (NSString*) url withPIN: (NSString*) pin withCertificate: (NSData*) certificate withData: ( NSString* _Nullable ) data  callback: (void(^) (int code, NSData* respData)) callback
 {
     const char* szUrl = url.UTF8String;
     const char* szPin = pin.UTF8String;
@@ -321,7 +325,7 @@ int https_post(char* szUrl, char* szPIN, unsigned char* certificate, size_t cert
     long len = 5000;
     int res;
     if(data)
-        res = https_post(szUrl, szPin, certificate.bytes, certificate.length, data.bytes, data.length, response, &len);
+        res = https_post(szUrl, szPin, certificate.bytes, certificate.length, data.UTF8String, data.length, response, &len);
     else
         res = https_post(szUrl, szPin, certificate.bytes, certificate.length, NULL, NULL, response, &len);
     

@@ -3,7 +3,6 @@
 //  CIESDK
 //
 //  Created by ugo chirico on 26.02.2020.
-//  Copyright © 2020 IPZS. All rights reserved.
 //
 
 #include <stdio.h>
@@ -22,7 +21,7 @@ unsigned char* cie_pin;
 unsigned long cie_pinlen;
 unsigned short cie_error;
 
-X509* cie_x509_certificate;
+X509* cie_x509_certificate = NULL;
 
 #define CIE_CMD_OK 0x9000
 
@@ -389,7 +388,12 @@ static int cie_engine_ctrl(ENGINE *engine, int cmd, long i, void *p, void (*f) (
                 X509 *cert;
             } *parms = p;
             
-            parms->cert = cie_x509_certificate = d2i_X509(NULL, &cie_certificate, cie_certlen);
+            if(!cie_x509_certificate)
+            {
+                cie_x509_certificate = d2i_X509(NULL, &cie_certificate, cie_certlen);
+            }
+            
+            parms->cert = X509_dup(cie_x509_certificate);
             parms->s_slot_cert_id = "cie";
             
             return 1;

@@ -6,10 +6,11 @@
 //  Copyright © 2019 Francesco Tufano. All rights reserved.
 //
 
+#import <WebKit/WebKit.h>
 #import <UIKit/UIKit.h>
 #import "Token.h"
 #import "wintypes.h"
-#import <iocieiossdk-Swift.h>
+#import <IOCIESDK-Swift.h>
 #import "HTTPSConnection.h"
 #import "IAS.h"
 #import "util.h"
@@ -176,7 +177,7 @@ bool authenticated = false;
     }
 }
 
-- (UInt16) post: (NSString*) url pin: (NSString*) pin certificate: (NSData*) certificate data: ( NSData* _Nullable ) data response: (NSMutableData*) response
+- (UInt16) post: (NSString*) url pin: (NSString*) pin certificate: (NSData*) certificate data: ( NSString* _Nullable ) data response: (NSMutableData*) response
 {
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
         

@@ -1,9 +1,7 @@
 //
 //  Token.swift
-//  e-id
 //
 //  Created by ugo chirico on 22/12/2019.
-//  Copyright © 2019 Francesco Tufano. All rights reserved.
 //
 
 import Foundation
@@ -42,8 +40,6 @@ public struct ResponseAPDU {
         
         concurrentQueue.async {
             
-//            print("async")
-            
             self.send(cmd: cmd) { (respAPDU, err) in
                 if(err == nil)
                 {
@@ -51,30 +47,21 @@ public struct ResponseAPDU {
                 }
                 else
                 {
-                    print("error")
                     print(error ?? "error")
                     error = err
                 }
-            
-//                print("signal")
                 semaphore.signal()
             }
         }
                 
         if(responseAPDU == nil)
         {
-//            print("wait")
-            semaphore.wait()//timeout: .init(uptimeNanoseconds: 3000000))
+            semaphore.wait()
         }
 
-//        print("stop waiting")
         if(error == nil)
         {
             var response : Data = Data();
-            
-//            print("SW1SW2")
-//            print(responseAPDU!.sw1)
-//            print(responseAPDU!.sw2)
             
             response.append(contentsOf: responseAPDU!.data)
             response.append(responseAPDU!.sw1)

@@ -3,7 +3,6 @@
 //  CIESDK
 //
 //  Created by ugo chirico on 26.02.2020.
-//  Copyright © 2020 IPZS. All rights reserved.
 //
 
 #include "CIEEngineHelper.h"
