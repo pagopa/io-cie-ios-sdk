@@ -1,5 +1,5 @@
 //
-//  TagHandler.swift
+//  CIETagReader.swift
 //  NFCTest
 //
 //
