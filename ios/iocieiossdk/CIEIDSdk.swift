@@ -6,15 +6,6 @@
 import UIKit
 import CoreNFC
 
-private enum Op: Int {
-    case ReadNIS
-    case Abbina
-    case Sign
-    case ChangePIN
-    case UnlockPIN
-    case SSLAuthentication
-}
-
 extension URL {
     var queryParameters: QueryParameters { return QueryParameters(url: self) }
 }
@@ -101,7 +92,7 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
         {
           
             self.readerSession = nil
-            self.completedHandler(ErrorHelper.TAG_ERROR_SESSION_INVALIDATED, nil)//error.errorTagError(errorDescription: error.localizedDescription))
+            self.completedHandler(ErrorHelper.TAG_ERROR_SESSION_INVALIDATED, nil)
         }
         
         self.readerSession = nil
@@ -148,24 +139,18 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
         print(self.url!)
         
         let url1 = URL(string: self.url!.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
-//        print(url1)
-//        print(url1?.baseURL)
-//        print(url1?.baseURL?.absoluteString)
         
       let value = url1!.queryParameters[Constants.KEY_VALUE]!
       let name = url1!.queryParameters[Constants.KEY_NAME]!
       let authnRequest = url1!.queryParameters[Constants.KEY_AUTHN_REQUEST_STRING]!
       let nextUrl = url1!.queryParameters[Constants.KEY_NEXT_UTL]!
       let opText = url1!.queryParameters[Constants.KEY_OP_TEXT]!
-        //let host = appLinkData.host ?: ""
       let logo = url1?.queryParameters[Constants.KEY_LOGO]!
 
-      //let params : Data = NSKeyedArchiver.archivedData(withRootObject: [name:value, Constants.authnRequest:authnRequest, Constants.generaCodice: "1"])
-    
         let params = "\(value)=\(name)&\(Constants.authnRequest)=\(authnRequest)&\(Constants.generaCodice)=1"
         
         self.cieTagReader?.post(url: Constants.BASE_URL_IDP, pin: self.pin!, data: params, completed: { (data, error) in
-        //self.cieTagReader?.post(url: self.url!, pin: self.pin!, data: nil, completed: { (data, error) in
+          
             let  session = self.readerSession
             self.readerSession = nil
             session?.invalidate()
@@ -179,7 +164,7 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
                 let codiceServer = String((response?.split(separator: ":")[1])!)
               
               let newurl = nextUrl + "?" + name + "=" + value + "&login=1&codice=" + codiceServer
-//                                     callback?.onSuccess(url)
+
                 self.completedHandler(0, newurl)
             }
             else
