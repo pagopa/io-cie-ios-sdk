@@ -231,6 +231,8 @@ static int cie_pkey_rsa_sign(EVP_PKEY_CTX *evp_pkey_ctx,
         case RSA_PKCS1_PSS_PADDING:
             printf("%s:%d padding=RSA_PKCS1_PSS_PADDING\n",
                 __FILE__, __LINE__);
+            printf("Unsopperted padding. CIE supports PKCS1_PADDING only\n");
+            return 0;
             break;
         case RSA_PKCS1_PADDING:
             printf("%s:%d padding=RSA_PKCS1_PADDING\n",
@@ -239,6 +241,8 @@ static int cie_pkey_rsa_sign(EVP_PKEY_CTX *evp_pkey_ctx,
         default:
             printf("%s:%d unsupported padding: %d\n",
                     __FILE__, __LINE__, padding);
+            printf("Unsopperted padding. CIE supports PKCS1_PADDING only\n");
+            return 0;
             break;
     } /* end switch(padding) */
 
