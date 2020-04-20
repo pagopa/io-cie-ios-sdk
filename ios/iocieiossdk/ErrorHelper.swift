@@ -7,22 +7,28 @@
 
 import Foundation
 
-public class ErrorHelper {
+@objc public class ErrorHelper : NSObject {
     
-    public static let TAG_ERROR_SESSION_INVALIDATED : UInt16 = 10
-    public static let TAG_ERROR_NFC_NOT_SUPPORTED : UInt16 = 11
+    public static let TAG_ERROR_SESSION_INVALIDATED : String = "TAG_ERROR_SESSION_INVALIDATED"
+    public static let TAG_ERROR_NFC_NOT_SUPPORTED : String = "TAG_ERROR_NFC_NOT_SUPPORTED"
     
     @objc public static func decodeError( error: UInt16) -> String {
         
-        if(error < 100)
+        if(error < 100) // NFC error
         {
-            return decodeTagSessionError(err: error)
+            return "ON_TAG_LOST"
+            //return decodeTagSessionError(err: error)
         }
-        else if (error < 1000)
+        else if (error < 1000) // HTTP ERROR
         {
-            return decodeHTTPError(err: error)
+            return "AUTHENTICATION_ERROR"
+            //return decodeHTTPError(err: error)
         }
-        else
+        else if (error < 2000) //CURL ERROR
+        {
+            return "ON_NO_INTERNET_CONNECTION"
+        }
+        else // smart card error
         {
             return decodeCIEError(sw1sw2: error)
         }
@@ -63,6 +69,7 @@ public class ErrorHelper {
                    0x87:"Non Volatile memory not available",
                    0x88:"Key number not valid",
                    0x89:"Key length is not correct",
+                   0xC0:"PIN Locked",
                    0xC1:"Wrong PIN, 1 attempt left",
                    0xC2:"Wrong PIN, 2 attempts left",
                    0xC:"Counter provided by X (valued from 0 to 15) (exact meaning depending on the command)"],

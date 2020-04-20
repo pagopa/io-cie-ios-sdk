@@ -245,13 +245,6 @@ int https_post(char* szUrl, char* szPIN, unsigned char* certificate, size_t cert
         //give the data you want to post
         curl_easy_setopt(curl, CURLOPT_POSTFIELDS, data);
 
-        //give the data lenght
-        //curl_easy_setopt(curl, CURLOPT_POSTFIELDSIZE, length);
-
-        
-        // copy data to POST
-        //curl_easy_setopt(curl, CURLOPT_COPYPOSTFIELDS, 1L);
-        
         struct curl_slist *headers = NULL;
             
         /* Remove a header curl would otherwise add by itself */
@@ -329,10 +322,18 @@ int https_post(char* szUrl, char* szPIN, unsigned char* certificate, size_t cert
     else
         res = https_post(szUrl, szPin, certificate.bytes, certificate.length, NULL, NULL, response, &len);
     
-    if(res == CURLE_OK || res < 400)
+    if(res == CURLE_COULDNT_RESOLVE_HOST || res == CURLE_OPERATION_TIMEDOUT)
+    {
+        callback(1000 + res, NULL);
+    }
+    else if(res == CURLE_OK || res < 400)
+    {
         callback(CURLE_OK, [NSData dataWithBytes:response length:len]);
+    }
     else
+    {
         callback(res, NULL);
+    }
 }
 
 @end

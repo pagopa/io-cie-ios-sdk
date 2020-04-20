@@ -72,14 +72,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
                     
                     ViewController.ciesdk.post(url: self.deeplink!, pin: "11223344", completed: { (error, response) in
                         
-                        if(error == 0)
-                        {
-                            print(response)
-                        }
-                        else
-                        {
-                            print(error)
-                        }
+                        print(response)
 
                         self.deeplink = nil
                         

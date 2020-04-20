@@ -267,6 +267,7 @@ static int cie_pkey_rsa_sign(EVP_PKEY_CTX *evp_pkey_ctx,
     cie_error = 0;
     
     X509_free(cie_x509_certificate);
+    cie_x509_certificate = NULL;
         
     return 1;
 
