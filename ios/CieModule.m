@@ -16,7 +16,7 @@
 @interface CieModule()
 
 @property long attemptsLeft;
-@property NSString* pin;
+@property (nonatomic) NSString* pin;
 @property NSString* url;
 @property CIEIDSdk* cieSDK;
 
@@ -49,7 +49,7 @@ RCT_EXPORT_METHOD(hasNFCFeature:(RCTResponseSenderBlock)callback) {
   callback(@[@YES]);
 }
 
-RCT_EXPORT_METHOD(setPIN:(NSString*) pin) {
+RCT_EXPORT_METHOD(setPin:(NSString*) pin) {
   self.pin = pin;
 }
 
@@ -60,16 +60,16 @@ RCT_EXPORT_METHOD(setAuthenticationUrl:(NSString*) url) {
 RCT_EXPORT_METHOD(start:(RCTResponseSenderBlock)callback) {
   
   dispatch_async(dispatch_get_global_queue(0, 0), ^{
-    [self.cieSDK postWithUrl:self.url pin:self.pin completed:^(uint16_t error, NSString* response) {
+    [self.cieSDK postWithUrl:self.url pin:self.pin completed:^(NSString* error, NSString* response) {
     
-      if(error == 0)
-      {
-        [self sendEvent: successChannel eventValue: response];
-      }
-      else
-      {
-        [self sendEvent: eventChannel eventValue: [NSString stringWithFormat:@"Error: %x", error]];
-      }
+        if(error == nil)
+        {
+            [self sendEvent: successChannel eventValue: response];
+        }
+        else
+        {
+            [self sendEvent: eventChannel eventValue: error];
+        }
     }];
   });
   
@@ -78,9 +78,8 @@ RCT_EXPORT_METHOD(start:(RCTResponseSenderBlock)callback) {
 
 - (void) sendEvent: (NSString*) channel eventValue: (NSString*) eventValue
 {
-  [self sendEventWithName:channel body:@{@"event": eventValue, @"attemptsLeft": [NSNumber numberWithInt:self.attemptsLeft]}];
+    [self sendEventWithName:channel body:@{@"event": eventValue, @"attemptsLeft": [NSNumber numberWithLong:self.cieSDK.attemptsLeft]}];
 }
-
 
 RCT_EXPORT_METHOD(launchCieID:(RCTResponseSenderBlock)callback) {
   // TODO run CIE ID

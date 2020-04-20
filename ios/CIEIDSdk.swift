@@ -43,20 +43,25 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
     private var readerSession: NFCTagReaderSession?
     private var cieTag: NFCISO7816Tag?
     private var cieTagReader : CIETagReader?
-    private var completedHandler: ((UInt16, String?)->())!
+    private var completedHandler: ((String?, String?)->())!
     
     private var url : String?
     private var pin : String?    
     
+    @objc public var attemptsLeft : Int;
+    
     override public init( ) {
-        super.init()
         
+        
+        attemptsLeft = 3
         cieTag = nil
         cieTagReader = nil
         url = nil
+        
+        super.init()
     }
     
-    private func start(completed: @escaping (UInt16, String?)->() ) {
+    private func start(completed: @escaping (String?, String?)->() ) {
         self.completedHandler = completed
         
         guard NFCTagReaderSession.readingAvailable else {
@@ -69,13 +74,13 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
         if NFCTagReaderSession.readingAvailable {
             Log.debug( "readingAvailable" )
             readerSession = NFCTagReaderSession(pollingOption: [.iso14443], delegate: self, queue: nil)
-            readerSession?.alertMessage = "Poggia la cie sul restro dell'iphone in prossimità del lettore NFC."
+            readerSession?.alertMessage = "Poggia la cie sul retro dell'iphone in prossimità del lettore NFC."
             readerSession?.begin()
         }
     }
     
     @objc
-    public func post(url: String, pin: String, completed: @escaping (UInt16, String?)->() ) {
+    public func post(url: String, pin: String, completed: @escaping (String?, String?)->() ) {
            self.pin = pin
            self.url = url
 
@@ -111,14 +116,19 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
         case let .iso7816(tag):
             cieTag = tag
         default:
-            session.invalidate(errorMessage: "Tag not valid.")
+            let  session = self.readerSession
+            self.readerSession = nil
+            session?.invalidate()
+            self.completedHandler("ON_TAG_DISCOVERED_NOT_CIE", nil)
             return
         }
         
         // Connect to tag
         session.connect(to: tag) { [unowned self] (error: Error?) in
             if error != nil {
-                session.invalidate(errorMessage: "Connection error. Please try again.")
+                self.readerSession = nil
+                session.invalidate()
+                self.completedHandler("ON_TAG_LOST", nil)
                 return
             }
             
@@ -140,12 +150,12 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
         
         let url1 = URL(string: self.url!.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
         
-      let value = url1!.queryParameters[Constants.KEY_VALUE]!
-      let name = url1!.queryParameters[Constants.KEY_NAME]!
-      let authnRequest = url1!.queryParameters[Constants.KEY_AUTHN_REQUEST_STRING]!
-      let nextUrl = url1!.queryParameters[Constants.KEY_NEXT_UTL]!
-      let opText = url1!.queryParameters[Constants.KEY_OP_TEXT]!
-      let logo = url1?.queryParameters[Constants.KEY_LOGO]!
+        let value = url1!.queryParameters[Constants.KEY_VALUE]!
+        let name = url1!.queryParameters[Constants.KEY_NAME]!
+        let authnRequest = url1!.queryParameters[Constants.KEY_AUTHN_REQUEST_STRING]!
+        let nextUrl = url1!.queryParameters[Constants.KEY_NEXT_UTL]!
+//        let opText = url1!.queryParameters[Constants.KEY_OP_TEXT]!
+//        let logo = url1?.queryParameters[Constants.KEY_LOGO]!
 
         let params = "\(value)=\(name)&\(Constants.authnRequest)=\(authnRequest)&\(Constants.generaCodice)=1"
         
@@ -155,22 +165,36 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
             self.readerSession = nil
             session?.invalidate()
             
-            if(error == 0)
+            switch(error)
             {
-              let response = String(data: data!, encoding: .utf8)
-              
-              print("response: \(response ?? "nil")")
-              	
-                let codiceServer = String((response?.split(separator: ":")[1])!)
-              
-              let newurl = nextUrl + "?" + name + "=" + value + "&login=1&codice=" + codiceServer
+                case 0:  // OK
+                    let response = String(data: data!, encoding: .utf8)
+                    print("response: \(response ?? "nil")")
+                    let codiceServer = String((response?.split(separator: ":")[1])!)
+                    let newurl = nextUrl + "?" + name + "=" + value + "&login=1&codice=" + codiceServer
+                    self.completedHandler(nil, newurl)
+                    break;
 
-                self.completedHandler(0, newurl)
-            }
-            else
-            {
-                self.completedHandler(error, nil)
-            }
+                case 0x63C0: // PIN LOCKED
+                    self.attemptsLeft = 0
+                    self.completedHandler("ON_CARD_PIN_LOCKED", nil)
+                    break;
+                
+                case 0x63C1: // WRONG PIN 1 ATTEMPT LEFT
+                    self.attemptsLeft = 1
+                    self.completedHandler("ON_PIN_ERROR", nil)
+                    break;
+                
+                case 0x63C2: // WRONG PIN 2 ATTEMPTS LEFT
+                    self.attemptsLeft = 2
+                    self.completedHandler("ON_PIN_ERROR", nil)
+                    break;
+                
+                default: // OTHER ERROR
+                    self.completedHandler(ErrorHelper.decodeError(error: error), nil)
+                    break;
+                
+            }            
         })
     }
 }
