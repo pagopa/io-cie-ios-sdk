@@ -7,7 +7,7 @@
 //
 
 #import "CieModule.h"
-#import <iocieiossdk-Swift.h>
+#import <RNNativeCiesdk-Swift.h>
 
 #define eventChannel @"onEvent"
 #define errorChannel @"onError"
