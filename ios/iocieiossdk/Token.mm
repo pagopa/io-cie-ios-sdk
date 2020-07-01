@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "Token.h"
 #import "wintypes.h"
-#import <IOCIESDK-Swift.h>
+#import <iocieiossdk-Swift.h>
 #import "HTTPSConnection.h"
 #import "IAS.h"
 #import "util.h"

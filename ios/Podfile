@@ -41,13 +41,3 @@ target 'iocieiossdk' do
 
   use_native_modules!
 end
-
-target 'iocieiossdk-tvOS' do
-  # Pods for iocieiossdk-tvOS
-
-  target 'iocieiossdk-tvOSTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-end

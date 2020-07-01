@@ -15,6 +15,35 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CieModule : RCTEventEmitter  <RCTBridgeModule>
 
 
+-(void) isNFCEnabled:(RCTResponseSenderBlock)callback;
+
+-(void) hasNFCFeature:(RCTResponseSenderBlock)callback;
+
+-(void) setPin:(NSString*) pin;
+
+-(void) setAuthenticationUrl:(NSString*) url;
+
+- (NSString*) getPin;
+
+- (NSString*) getAuthenticationUrl;
+
+- (void) post: (void(^)(NSString*, NSString* )) callback;
+
+-(void) launchCieID:(RCTResponseSenderBlock)callback;
+
+ #pragma NOT_AVAILABLE_ON_IOS
+
+// non disponibile su iOS
+-(void) startListeningNFC:(RCTResponseSenderBlock)callback;
+
+ // non disponibile su iOS
+-(void) stopListeningNFC:(RCTResponseSenderBlock)callback;
+
+ // non disponibile su iOS
+-(void) openNFCSettings:(RCTResponseSenderBlock)callback;
+
+ // non disponibile su iOS
+-(void) hasApiLevelSupport:(RCTResponseSenderBlock)callback;
 
 @end
 
