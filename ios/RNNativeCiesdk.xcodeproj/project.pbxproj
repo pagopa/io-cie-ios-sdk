@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A48EDA524AD382700DCC0E8 /* libnghttp2_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A48EDA424AD382700DCC0E8 /* libnghttp2_iOS.a */; };
 		B3E7B58A1CC2AC0600A0062D /* RNNativeCiesdk.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNNativeCiesdk.m */; };
 		E51112F32434A0C500FA135A /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E51112E42434A08D00FA135A /* libReact.a */; };
 		E511132D2434A2BC00FA135A /* MAC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E51112F52434A2B700FA135A /* MAC.cpp */; };
 		E511132E2434A2BC00FA135A /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51112F62434A2B700FA135A /* Logging.swift */; };
-		E511132F2434A2BC00FA135A /* libnghttp2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E51112F82434A2B700FA135A /* libnghttp2.a */; };
 		E51113302434A2BC00FA135A /* CieModule.m in Sources */ = {isa = PBXBuildFile; fileRef = E51112F92434A2B700FA135A /* CieModule.m */; };
 		E51113312434A2BC00FA135A /* Array.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E51112FB2434A2B700FA135A /* Array.cpp */; };
 		E51113322434A2BC00FA135A /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51112FC2434A2B800FA135A /* Token.swift */; };
@@ -115,6 +115,7 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRNNativeCiesdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNNativeCiesdk.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A48EDA424AD382700DCC0E8 /* libnghttp2_iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libnghttp2_iOS.a; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* RNNativeCiesdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNNativeCiesdk.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* RNNativeCiesdk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNNativeCiesdk.m; sourceTree = "<group>"; };
 		E51112D82434A08C00FA135A /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
@@ -122,7 +123,6 @@
 		E51112F52434A2B700FA135A /* MAC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MAC.cpp; sourceTree = "<group>"; };
 		E51112F62434A2B700FA135A /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		E51112F72434A2B700FA135A /* Array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Array.h; sourceTree = "<group>"; };
-		E51112F82434A2B700FA135A /* libnghttp2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libnghttp2.a; sourceTree = "<group>"; };
 		E51112F92434A2B700FA135A /* CieModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CieModule.m; sourceTree = "<group>"; };
 		E51112FA2434A2B700FA135A /* CieModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CieModule.h; sourceTree = "<group>"; };
 		E51112FB2434A2B700FA135A /* Array.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Array.cpp; sourceTree = "<group>"; };
@@ -183,10 +183,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E511134D2434A53700FA135A /* libz.1.tbd in Frameworks */,
+				4A48EDA524AD382700DCC0E8 /* libnghttp2_iOS.a in Frameworks */,
 				E51113472434A2BC00FA135A /* libssl.a in Frameworks */,
 				E51113492434A2BC00FA135A /* libcrypto.a in Frameworks */,
 				E51112F32434A0C500FA135A /* libReact.a in Frameworks */,
-				E511132F2434A2BC00FA135A /* libnghttp2.a in Frameworks */,
 				E51113342434A2BC00FA135A /* libcurl_iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -235,7 +235,7 @@
 				E511131E2434A2BA00FA135A /* iocieiossdk.entitlements */,
 				E51113292434A2BB00FA135A /* libcrypto.a */,
 				E51113022434A2B800FA135A /* libcurl_iOS.a */,
-				E51112F82434A2B700FA135A /* libnghttp2.a */,
+				4A48EDA424AD382700DCC0E8 /* libnghttp2_iOS.a */,
 				E51113232434A2BB00FA135A /* libssl.a */,
 				E51112F62434A2B700FA135A /* Logging.swift */,
 				E51112F52434A2B700FA135A /* MAC.cpp */,
