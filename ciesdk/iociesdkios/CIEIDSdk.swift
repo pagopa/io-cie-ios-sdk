@@ -36,7 +36,7 @@ struct Constants {
     //COLLAUDO
     //"https://idserver.servizicie.interno.gov.it:8443/idp/"
 }
-
+@available(iOS 13.0, *)
 @objc(CIEIDSdk)
 public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
     

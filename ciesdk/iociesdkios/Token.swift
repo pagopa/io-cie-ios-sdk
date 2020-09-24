@@ -20,7 +20,7 @@ public struct ResponseAPDU {
     }
 }
 
-
+@available(iOS 13.0, *)
 @objc public class NFCToken : NSObject {
     
     var tag : NFCISO7816Tag

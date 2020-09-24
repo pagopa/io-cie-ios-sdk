@@ -15,6 +15,7 @@
 #import "IAS.h"
 #import "util.h"
 
+API_AVAILABLE(ios(13.0))
 @interface CIEToken()
     @property NFCToken* token;
     @property ByteDynArray idServiziData;
@@ -89,7 +90,7 @@ StatusWord Transmit(ByteArray apdu, ByteDynArray *resp)
 bool authenticated = false;
 
 - (CIEToken*) initWithNFCToken: (NFCToken*) token
-{
+API_AVAILABLE(ios(13.0)){
     self = [super init];
     if(self)
     {

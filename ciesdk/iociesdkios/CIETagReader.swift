@@ -55,7 +55,9 @@ public class CIETagError : TagError {
     public var sw1sw2 : UInt16
 }
 
+@available(iOS 13.0, *)
 public class CIETagReader {
+    
     var tag : NFCISO7816Tag
     var nfcToken : NFCToken
     let cieToken : CIEToken
