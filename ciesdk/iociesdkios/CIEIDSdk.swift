@@ -74,7 +74,7 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
         if NFCTagReaderSession.readingAvailable {
             Log.debug( "readingAvailable" )
             readerSession = NFCTagReaderSession(pollingOption: [.iso14443], delegate: self, queue: nil)
-            readerSession?.alertMessage = "Poggia la cie sul retro dell'iphone in prossimità del lettore NFC."
+            readerSession?.alertMessage = "Posiziona la carta CIE sul retro del dispositivo in prossimità del lettore NFC."
             readerSession?.begin()
         }
     }
@@ -132,7 +132,7 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
                 return
             }
             
-            self.readerSession?.alertMessage = "Lettura CIE ....."
+            self.readerSession?.alertMessage = "Lettura in corso.\nNon rimuovere la carta."
             self.cieTagReader = CIETagReader(tag:self.cieTag!)
             self.startReading( )
         }
