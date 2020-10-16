@@ -74,7 +74,7 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
         if NFCTagReaderSession.readingAvailable {
             Log.debug( "readingAvailable" )
             readerSession = NFCTagReaderSession(pollingOption: [.iso14443], delegate: self, queue: nil)
-            readerSession?.alertMessage = "Posiziona la carta CIE sul retro del dispositivo in prossimità del lettore NFC."
+            readerSession?.alertMessage = "Tieni ferma la carta CIE sul retro del dispositivo, nell'area superiore"
             readerSession?.begin()
         }
     }
