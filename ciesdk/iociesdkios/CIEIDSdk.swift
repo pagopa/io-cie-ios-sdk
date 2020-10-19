@@ -95,12 +95,12 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
         Log.debug( "tagReaderSession:didInvalidateWithError - \(error)" )
         if(self.readerSession != nil)
         {
-          
-            self.readerSession = nil
+            let nfcError = error as! NFCReaderError
+            let errorMessage = ErrorHelper.nativeError(errorMessage: ErrorHelper.decodeError(error:UInt16(nfcError.errorCode)))
+            self.readerSession?.invalidate(errorMessage:errorMessage)
             self.completedHandler(ErrorHelper.TAG_ERROR_SESSION_INVALIDATED, nil)
         }
         
-        self.readerSession = nil
     }
     
     public func tagReaderSession(_ session: NFCTagReaderSession, didDetect tags: [NFCTag]) {
@@ -116,9 +116,8 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
         case let .iso7816(tag):
             cieTag = tag
         default:
-            let  session = self.readerSession
-            self.readerSession = nil
-            session?.invalidate()
+            //self.readerSession = nil
+            self.readerSession?.invalidate(errorMessage: "La carta utilizzata non sembra essere una Carta di Identità Elettronica (CIE).")
             self.completedHandler("ON_TAG_DISCOVERED_NOT_CIE", nil)
             return
         }
@@ -126,13 +125,14 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
         // Connect to tag
         session.connect(to: tag) { [unowned self] (error: Error?) in
             if error != nil {
-                self.readerSession = nil
-                session.invalidate()
+                let  session = self.readerSession
+                session?.invalidate(errorMessage: "Hai rimosso la carta troppo presto. Tieni la carta appoggiata sul retro dello smartphone finché nello schermo non comparirà una conferma. Basterà qualche secondo.")
+                // self.readerSession = nil
                 self.completedHandler("ON_TAG_LOST", nil)
                 return
             }
             
-            self.readerSession?.alertMessage = "Lettura in corso.\nNon rimuovere la carta."
+            self.readerSession?.alertMessage = "Lettura in corso.\nNon muovere la carta."
             self.cieTagReader = CIETagReader(tag:self.cieTag!)
             self.startReading( )
         }
@@ -162,12 +162,13 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
         self.cieTagReader?.post(url: Constants.BASE_URL_IDP, pin: self.pin!, data: params, completed: { (data, error) in
           
             let  session = self.readerSession
-            self.readerSession = nil
-            session?.invalidate()
+            //self.readerSession = nil
+            // session?.invalidate()
             
             switch(error)
             {
                 case 0:  // OK
+                    // session?.alertMessage = "Lettura avvenuta con successo!\nAttendi ancora qualche secondo."
                     let response = String(data: data!, encoding: .utf8)
                     print("response: \(response ?? "nil")")
                     let codiceServer = String((response?.split(separator: ":")[1])!)
@@ -177,21 +178,24 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
 
                 case 0x63C0: // PIN LOCKED
                     self.attemptsLeft = 0
+                    session?.invalidate(errorMessage: "Carta CIE bloccata")
                     self.completedHandler("ON_CARD_PIN_LOCKED", nil)
                     break;
                 
                 case 0x63C1: // WRONG PIN 1 ATTEMPT LEFT
                     self.attemptsLeft = 1
                     self.completedHandler("ON_PIN_ERROR", nil)
+                    session?.invalidate(errorMessage: "PIN errato, hai ancora 1 tentativo")
                     break;
                 
                 case 0x63C2: // WRONG PIN 2 ATTEMPTS LEFT
                     self.attemptsLeft = 2
-                    self.completedHandler("ON_PIN_ERROR", nil)
+                    session?.invalidate(errorMessage: "PIN errato, hai ancora 2 tentativi")
                     break;
                 
                 default: // OTHER ERROR
                     self.completedHandler(ErrorHelper.decodeError(error: error), nil)
+                    session?.invalidate(errorMessage:ErrorHelper.nativeError(errorMessage:ErrorHelper.decodeError(error: error)))
                     break;
                 
             }            

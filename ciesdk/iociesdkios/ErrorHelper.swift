@@ -49,6 +49,17 @@ import Foundation
     @objc public static func decodeTagSessionError( err:UInt16 ) -> String {
         return "Tag Session Error \(err)"
     }
+    
+    @objc public static func nativeError(errorMessage: String) -> String{
+        let nativeErrorMapping : [String : String] = [
+            "Transmission Error": "Hai rimosso la carta troppo presto.\nTieni la carta appoggiata sul retro dello smartphone finché nello schermo non comparirà una conferma",
+            "PIN Locked":"PIN bloccato.\nCarta temporaneamente bloccata"]
+        let value = nativeErrorMapping[errorMessage];
+        if(value != nil){
+            return value!;
+        }
+        return "Errore.\nRiprova!"
+    }
 
     @objc public static func decodeError( sw1: UInt8, sw2:UInt8 ) -> String {
 
