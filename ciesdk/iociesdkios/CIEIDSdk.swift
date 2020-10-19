@@ -126,7 +126,7 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
         session.connect(to: tag) { [unowned self] (error: Error?) in
             if error != nil {
                 let  session = self.readerSession
-                session?.invalidate(errorMessage: "Hai rimosso la carta troppo presto. Tieni la carta appoggiata sul retro dello smartphone finché nello schermo non comparirà una conferma. Basterà qualche secondo.")
+                session?.invalidate(errorMessage: "Hai rimosso la carta troppo presto.")
                 // self.readerSession = nil
                 self.completedHandler("ON_TAG_LOST", nil)
                 return
