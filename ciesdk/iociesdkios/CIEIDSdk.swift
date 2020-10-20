@@ -86,6 +86,11 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
 
            self.start(completed: completed)
     }
+    
+    @objc
+    public func hasNFCFeature() -> Bool {
+        return NFCTagReaderSession.readingAvailable
+    }
 
     public func tagReaderSessionDidBecomeActive(_ session: NFCTagReaderSession) {
         Log.debug( "tagReaderSessionDidBecomeActive" )
