@@ -103,7 +103,6 @@ public class CIETagReader {
             sw = self.cieToken.post(url, pin: pin, certificate: certificate as Data, data: data, response: respone)
             if(sw != 0)
             {
-                print("error \(sw)")
                 completed(nil, sw)
             }
             else
