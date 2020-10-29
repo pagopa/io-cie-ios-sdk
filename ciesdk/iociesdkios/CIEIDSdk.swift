@@ -178,8 +178,7 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
                     let newurl = nextUrl + "?" + name + "=" + value + "&login=1&codice=" + codiceServer
                     self.completedHandler(nil, newurl)
                     break;
-
-                case 0x63C0: // PIN LOCKED
+                case 0x63C0,0x6983: // PIN LOCKED
                     self.attemptsLeft = 0
                     session?.invalidate(errorMessage: "Carta CIE bloccata")
                     self.completedHandler("ON_CARD_PIN_LOCKED", nil)
