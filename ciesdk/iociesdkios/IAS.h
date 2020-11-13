@@ -33,7 +33,8 @@ extern ByteArray baExtAuth_PrivExp;
 enum CIE_Type {
 	CIE_Unknown,
 	CIE_Gemalto,
-	CIE_NXP
+	CIE_NXP,
+    CIE_ST
 };
 
 enum CIE_DF {

@@ -25,7 +25,7 @@
 
 #include <stdlib.h>
 #include <unistd.h>
-
+//#import <FirebaseCrashlytics/FirebaseCrashlytics.h>
 
 extern ByteArray SkipZero(ByteArray &ba);
 //extern DWORD WINAPI _abilitaCIE(LPVOID lpThreadParameter);
@@ -120,6 +120,11 @@ void IAS::Sign(ByteArray &data, ByteDynArray &signedData) {
     if ((sw = SendAPDU_SM(VarToByteArray(SetKey), ASN1Tag(0x80, val02Ba).append(ASN1Tag(0x84, keyIdBa)), resp)) != 0x9000)
 		throw scard_error(sw);
 	
+    //std::string s;
+    
+    //printf("data to sign: %d\n", data.size());
+    //printf("data to sign: %s\n", dumpHexData(data, s).c_str());
+           
 	uint8_t Sign[] = { 0x00, 0x88, 0x00, 0x00 };
 	if ((sw = SendAPDU_SM(VarToByteArray(Sign), data, signedData)) != 0x9000)
 		throw scard_error(sw);
@@ -171,7 +176,7 @@ void IAS::readfile(uint16_t id, ByteDynArray &content){
 
 	if (ActiveSM)
     {
-        printf("readfile with SM\n");
+        //printf("readfile with SM\n");
 		return readfile_SM(id, content);
     }
 	ByteDynArray resp;
@@ -271,116 +276,134 @@ void IAS::SelectAID_CIE(bool SM) {
 	exit_func
 }
 
-//uint8_t NXP_ATR[] = { 0x80, 0x31, 0x80, 0x65, 0x49, 0x54, 0x4E, 0x58, 0x50, 0x12, 0x0F, 0xFF, 0x82, 0x90 };
-//uint8_t Gemalto_ATR[] = { 0x80, 0x31, 0x80, 0x65, 0xB0, 0x85, 0x04, 0x00, 0x11, 0x12, 0x0F, 0xFF, 0x82, 0x90, 0x00 };
 uint8_t Gemalto_ATR[] = { 0x49,0x61,0x73, 0x45,0x63,0x63,0x52,0x6F,0x6F,0x74 };
                           //I     A    S      E    C    C    R   O    O     T
-
-
 uint8_t NXP_ATR[] = { 0x80, 0x00, 0x43, 0x01, 0xB8, 0x46, 0x04, 0x10, 0x10, 0x10, 0x10, 0x47, 0x03, 0x94 };
 uint8_t Gemalto2_ATR[] = { 0x47, 0x03, 0x94, 0x41, 0xC0 };
+uint8_t ST_ATR[] = { 0x80, 0x00, 0x43, 0x01, 0xB9, 0x46, 0x04, 0x00, 0x00, 0x00, 0x10, 0x47, 0x03, 0x94, 0x01, 0x81, 0x4F, 0x0C, 0xA0, 0x00, 0x00, 0x00, 0x95, 0x00, 0x00, 0x00, 0x00, 0x8A, 0x00, 0x01, 0xE0, 0x10, 0x02, 0x02, 0x00, 0xFF, 0x02, 0x02, 0x00, 0xFF, 0x02, 0x02, 0x01, 0x00, 0x02, 0x02, 0x01, 0x00, 0x78, 0x08, 0x06 , 0x06 , 0x2B , 0x81 , 0x22 , 0xF8 , 0x78, 0x02, 0x82, 0x02, 0x90, 0x00 };
 
 //uint8_t NXP_ATR[] = { 0x80, 0x00, 0x43, 0x01, 0xB9, 0x46, 0x04};
 ByteArray baNXP_ATR(NXP_ATR, sizeof(NXP_ATR));
 ByteArray baGemalto_ATR(Gemalto_ATR, sizeof(Gemalto_ATR));
 ByteArray baGemalto2_ATR(Gemalto2_ATR, sizeof(Gemalto2_ATR));
-
+ByteArray baST_ATR(ST_ATR, sizeof(ST_ATR));
 
 // 80 00 43 01 B8 46 04 10 10 10 10 47 03 94 01 80 E0 10 02 02 01 04 02 02 00 E6 02 02 00 E6 02 02 00 E6 78 08 06 06 2B 81 22 F8 78 02 82 02 90 00 00 90 00  MIA
-
 // 47 03 94 41 C0 90 00 // ANNULLATA
-
 // 80 00 43 01 B8 46 04 10 10 10 10 47 03 94 01 80 E0 10 02 02 01 04 02 02 00 E6 02 02 00 E6 02 02 00 E6 78 08 06 06 2B 81 22 F8 78 02 82 02 90 00 00 90 00
 
 
-void IAS::ReadCIEType() {	
+void IAS::ReadCIEType() {
 	init_func
 		size_t position;
-    
+
     SelectRoot();
     ReadATR(ATR);
-    
-    printf("\nATR: %s\n", dumpHexData(ATR).c_str());
-    
+
+    //printf("\nATR: %s\n", dumpHexData(ATR).c_str());
+
 	if (ATR.indexOf(baNXP_ATR,position))
     {
+        //[FIRCrashlytics.crashlytics log:@"NXP"];
         printf("NXP\n");
 		type = CIE_Type::CIE_NXP;
     }
 	else if (ATR.indexOf(baGemalto_ATR, position))
     {
+        //[FIRCrashlytics.crashlytics log:@"GEMALTO"];
         printf("GEMALTO\n");
 		type = CIE_Type::CIE_Gemalto;
     }
 	else if (ATR.indexOf(baGemalto2_ATR, position))
     {
+        //[FIRCrashlytics.crashlytics log:@"GEMALTO2"];
         printf("GEMALTO2\n");
 		type = CIE_Type::CIE_Gemalto;
     }
+    else if (ATR.indexOf(baST_ATR, position))
+    {
+        //[FIRCrashlytics.crashlytics log:@"ST"];
+        printf("ST\n");
+        type = CIE_Type::CIE_ST;
+    }
 	else
     {
+        //[FIRCrashlytics.crashlytics log:@"UNKNOWN"];
         printf("UNKNOWN\n");
 		throw logged_error("CIE non riconosciuta");
     }
-    
-    
+
+
 }
 
 void IAS::SelectRoot() {
     init_func
-    
+
     ByteDynArray resp;
     StatusWord sw;
-    
+
     uint8_t selectMF[] = { 0x00, 0xa4, 0x00, 0x00, 0x02, 0x3f, 0x00 };
 
     if ((sw = SendAPDU(VarToByteArray(selectMF), ByteArray(), resp)) != 0x9000)
         throw scard_error(sw);
-    
+
     exit_func
 }
 
 void IAS::SelectAID_IAS(bool SM) {
 	init_func
+    
+    ByteDynArray resp;
+    StatusWord sw;
+    uint8_t selectIAS[] = { 0x00, 0xa4, 0x04, 0x0c };
+    
+    if ((sw = SendAPDU(VarToByteArray(selectIAS), IAS_AID, resp)) != 0x9000)
+    {
+        uint8_t selectMF[] = { 0x00, 0xa4, 0x00, 0x00 };
+        if ((sw = SendAPDU(VarToByteArray(selectMF), ByteArray(), resp)) != 0x9000)
+            throw scard_error(sw);
+    }
+        
 	if (type == CIE_Type::CIE_Unknown) {
 		ReadCIEType();
 	}
-	ByteDynArray resp;
-	StatusWord sw;
     
-    if (type == CIE_Type::CIE_NXP)
-    {
-        uint8_t selectMF[] = { 0x00, 0xa4, 0x00, 0x00 };
-    
-        if (SM)
-        {
-            if ((sw = SendAPDU_SM(VarToByteArray(selectMF), ByteArray(), resp)) != 0x9000)
-                throw scard_error(sw);
-        }
-        else
-        {
-            if ((sw = SendAPDU(VarToByteArray(selectMF), ByteArray(), resp)) != 0x9000)
-                throw scard_error(sw);
-        }
-    }
-    else if (type == CIE_Type::CIE_Gemalto)
-    {
-        uint8_t selectIAS[] = { 0x00, 0xa4, 0x04, 0x0c };
-        if (SM)
-        {
-            if ((sw = SendAPDU_SM(VarToByteArray(selectIAS), IAS_AID, resp)) != 0x9000)
-                throw scard_error(sw);
-        }
-        else
-        {
-            if ((sw = SendAPDU(VarToByteArray(selectIAS), IAS_AID, resp)) != 0x9000)
-                throw scard_error(sw);
-        }
-    }
-    else
-    {
-        throw logged_error("Tipo CIE sconosciuto");
-    }
+//	ByteDynArray resp;
+//	StatusWord sw;
+//
+//    if (type == CIE_Type::CIE_NXP)
+//    {
+//        uint8_t selectMF[] = { 0x00, 0xa4, 0x00, 0x00 };
+//
+//        if (SM)
+//        {
+//            if ((sw = SendAPDU_SM(VarToByteArray(selectMF), ByteArray(), resp)) != 0x9000)
+//                throw scard_error(sw);
+//        }
+//        else
+//        {
+//            if ((sw = SendAPDU(VarToByteArray(selectMF), ByteArray(), resp)) != 0x9000)
+//                throw scard_error(sw);
+//        }
+//    }
+//    else if (type == CIE_Type::CIE_Gemalto || type == CIE_Type::CIE_ST)
+//    {
+//        uint8_t selectIAS[] = { 0x00, 0xa4, 0x04, 0x0c };
+//        if (SM)
+//        {
+//            if ((sw = SendAPDU_SM(VarToByteArray(selectIAS), IAS_AID, resp)) != 0x9000)
+//                throw scard_error(sw);
+//        }
+//        else
+//        {
+//            if ((sw = SendAPDU(VarToByteArray(selectIAS), IAS_AID, resp)) != 0x9000)
+//                throw scard_error(sw);
+//        }
+//    }
+//    else
+//    {
+//        throw logged_error("Tipo CIE sconosciuto");
+//    }
     
     SM = false;
 
@@ -881,6 +904,7 @@ StatusWord IAS::getResp(ByteDynArray &resp, StatusWord sw,ByteDynArray &elabresp
 			}
 		}
 		else {
+            //printf("sw: %x", sw);
 			return sw;
 		}
 	}
@@ -1062,20 +1086,20 @@ void IAS::InitDHParam() {
 	CASNParser parser;
 	StatusWord sw;
 
-	if (type == CIE_Type::CIE_Gemalto) {
-		uint8_t getDHDoup[] = { 00, 0xcb, 0x3f, 0xff };
-		uint8_t getDHDuopData[] = { 0x4d, 0x08, 0x70, 0x06, 0xBF, 0xA1, 0x01, 0x02, 0xA3, 0x80 };
-
-		if ((sw = SendAPDU(VarToByteArray(getDHDoup), VarToByteArray(getDHDuopData), resp)) != 0x9000)
-            throw scard_error(sw);
-        
-		parser.Parse(resp);
-
-		dh_g = parser.tags[0]->tags[0]->tags[0]->tags[0]->content;
-		dh_p = parser.tags[0]->tags[0]->tags[0]->tags[1]->content;
-		dh_q = parser.tags[0]->tags[0]->tags[0]->tags[2]->content;
-	}
-	else if (type == CIE_Type::CIE_NXP) {
+//	if (type == CIE_Type::CIE_Gemalto || type == CIE_Type::CIE_ST) {
+//		uint8_t getDHDoup[] = { 00, 0xcb, 0x3f, 0xff };
+//		uint8_t getDHDuopData[] = { 0x4d, 0x08, 0x70, 0x06, 0xBF, 0xA1, 0x01, 0x02, 0xA3, 0x80 };
+//
+//		if ((sw = SendAPDU(VarToByteArray(getDHDoup), VarToByteArray(getDHDuopData), resp)) != 0x9000)
+//            throw scard_error(sw);
+//
+//		parser.Parse(resp);
+//
+//		dh_g = parser.tags[0]->tags[0]->tags[0]->tags[0]->content;
+//		dh_p = parser.tags[0]->tags[0]->tags[0]->tags[1]->content;
+//		dh_q = parser.tags[0]->tags[0]->tags[0]->tags[2]->content;
+//	}
+//	else if (type == CIE_Type::CIE_NXP) {
 		uint8_t getDHDoup[] = { 00, 0xcb, 0x3f, 0xff };
 		uint8_t getDHDuopData_g[] = { 0x4D, 0x0A, 0x70, 0x08, 0xBF, 0xA1, 0x01, 0x04, 0xA3, 0x02, 0x97, 0x00 };
 
@@ -1095,9 +1119,9 @@ void IAS::InitDHParam() {
 		throw scard_error(sw);
 		parser.Parse(resp);
 		dh_q = parser.tags[0]->tags[0]->tags[0]->tags[0]->content;
-	}
-	else 
-		throw logged_error("CIE non riconosciuta");
+//	}
+//	else
+//		throw logged_error("CIE non riconosciuta");
 
 
 	exit_func
@@ -1116,11 +1140,27 @@ void IAS::InitExtAuthKeyParam() {
 	ByteDynArray resp;
 
 	uint8_t getKeyDoup[] = { 00, 0xcb, 0x3f, 0xff };
-	uint8_t getKeyDuopData[] = { 0x4d, 0x0C, 0x70, 0x0A, 0xBF, 0xA0, CIE_KEY_ExtAuth_ID & 0x7f, 0x06, 0x7F, 0x49, 0x03, 0x5F, 0x20, 0x80 };
-	StatusWord sw;
-	if ((sw = SendAPDU(VarToByteArray(getKeyDoup), VarToByteArray(getKeyDuopData), resp)) != 0x9000)
-	throw scard_error(sw);
-
+    
+    StatusWord sw;
+    
+    uint8_t getKeyDuopData[] = { 0x4d, 0x09, 0x70, 0x07, 0xBF, 0xA0, CIE_KEY_ExtAuth_ID & 0x7f, 0x03, 0x7F, 0x49, 0x80 };
+    if ((sw = SendAPDU(VarToByteArray(getKeyDoup), VarToByteArray(getKeyDuopData), resp)) != 0x9000)
+    throw scard_error(sw);
+    
+//    if (type == CIE_Type::CIE_ST){
+//
+//        uint8_t getKeyDuopData[] = { 0x4d, 0x09, 0x70, 0x07, 0xBF, 0xA0, CIE_KEY_ExtAuth_ID & 0x7f, 0x03, 0x7F, 0x49, 0x80 };
+//        if ((sw = SendAPDU(VarToByteArray(getKeyDoup), VarToByteArray(getKeyDuopData), resp)) != 0x9000)
+//        throw scard_error(sw);
+//
+//    }else{
+//
+//        uint8_t getKeyDuopData[] = { 0x4d, 0x0C, 0x70, 0x0A, 0xBF, 0xA0, CIE_KEY_ExtAuth_ID & 0x7f, 0x06, 0x7F, 0x49, 0x03, 0x5F, 0x20, 0x80 };
+//        if ((sw = SendAPDU(VarToByteArray(getKeyDoup), VarToByteArray(getKeyDuopData), resp)) != 0x9000)
+//        throw scard_error(sw);
+//
+//    }
+    
 	CASNParser parser;
 	parser.Parse(resp);
 
