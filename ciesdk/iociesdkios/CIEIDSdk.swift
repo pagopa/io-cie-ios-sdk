@@ -177,6 +177,7 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
                     let codiceServer = String((response?.split(separator: ":")[1])!)
                     let newurl = nextUrl + "?" + name + "=" + value + "&login=1&codice=" + codiceServer
                     self.completedHandler(nil, newurl)
+                    session?.invalidate()
                     break;
                 case 0x63C0,0x6983: // PIN LOCKED
                     self.attemptsLeft = 0
