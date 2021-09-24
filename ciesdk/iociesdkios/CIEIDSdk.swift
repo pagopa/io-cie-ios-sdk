@@ -36,6 +36,20 @@ struct Constants {
     //COLLAUDO
     //"https://idserver.servizicie.interno.gov.it:8443/idp/"
 }
+
+enum AlertMessageKey : String {
+    case readingInstructions
+    case moreTags
+    case readingInProgress
+    case readingSuccess
+    case invalidCard
+    case tagLost
+    case cardLocked
+    case wrongPin1AttemptLeft
+    case wrongPin2AttemptLeft
+}
+
+
 @available(iOS 13.0, *)
 @objc(CIEIDSdk)
 public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
@@ -46,7 +60,8 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
     private var completedHandler: ((String?, String?)->())!
     
     private var url : String?
-    private var pin : String?    
+    private var pin : String?
+    private var alertMessages : [AlertMessageKey : String]
     
     @objc public var attemptsLeft : Int;
     
@@ -57,8 +72,31 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
         cieTag = nil
         cieTagReader = nil
         url = nil
-        
+        alertMessages = [AlertMessageKey : String]()
         super.init()
+        self.initMessages()
+    }
+    
+    private func initMessages(){
+        /* alert default values */
+        alertMessages[AlertMessageKey.readingInstructions] = "Tieni la tua carta d’identità elettronica sul retro dell’iPhone, nella parte in alto."
+        alertMessages[AlertMessageKey.moreTags] = "Sono stati individuate più carte NFC. Per favore avvicina una carta alla volta."
+        alertMessages[AlertMessageKey.readingInProgress] = "Lettura in corso, tieni ferma la carta ancora per qualche secondo..."
+        alertMessages[AlertMessageKey.readingSuccess] = "Lettura avvenuta con successo.\nPuoi rimuovere la carta mentre completiamo la verifica dei dati."
+        /* errors */
+        alertMessages[AlertMessageKey.invalidCard] = "La carta utilizzata non sembra essere una Carta di Identità Elettronica (CIE)."
+        alertMessages[AlertMessageKey.tagLost] = "Hai rimosso la carta troppo presto."
+        alertMessages[AlertMessageKey.cardLocked] = "Carta CIE bloccata"
+        alertMessages[AlertMessageKey.wrongPin1AttemptLeft] = "PIN errato, hai ancora 1 tentativo"
+        alertMessages[AlertMessageKey.wrongPin2AttemptLeft] = "PIN errato, hai ancora 2 tentativi"
+    }
+    
+    @objc
+    public func setAlertMessage(key: String, value: String){
+        let maybeKey = AlertMessageKey(rawValue: key)
+        if(maybeKey != nil){
+            alertMessages[maybeKey!] = value
+        }
     }
     
     private func start(completed: @escaping (String?, String?)->() ) {
@@ -74,7 +112,7 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
         if NFCTagReaderSession.readingAvailable {
             Log.debug( "readingAvailable" )
             readerSession = NFCTagReaderSession(pollingOption: [.iso14443], delegate: self, queue: nil)
-            readerSession?.alertMessage = "Tieni la tua carta d’identità elettronica sul retro dell’iPhone, nella parte in alto."
+            readerSession?.alertMessage = alertMessages[AlertMessageKey.readingInstructions]!
             readerSession?.begin()
         }
     }
@@ -111,7 +149,7 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
     public func tagReaderSession(_ session: NFCTagReaderSession, didDetect tags: [NFCTag]) {
         Log.debug( "tagReaderSession:didDetect - \(tags[0])" )
         if tags.count > 1 {
-            session.alertMessage = "More than 1 tags was found. Please present only 1 tag."
+            session.alertMessage = alertMessages[AlertMessageKey.moreTags]!
             return
         }
         
@@ -122,7 +160,7 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
             cieTag = tag
         default:
             //self.readerSession = nil
-            self.readerSession?.invalidate(errorMessage: "La carta utilizzata non sembra essere una Carta di Identità Elettronica (CIE).")
+            self.readerSession?.invalidate(errorMessage: alertMessages[AlertMessageKey.invalidCard]!)
             self.completedHandler("ON_TAG_DISCOVERED_NOT_CIE", nil)
             return
         }
@@ -131,13 +169,13 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
         session.connect(to: tag) { [unowned self] (error: Error?) in
             if error != nil {
                 let  session = self.readerSession
-                session?.invalidate(errorMessage: "Hai rimosso la carta troppo presto.")
+                session?.invalidate(errorMessage: alertMessages[AlertMessageKey.tagLost]!)
                 // self.readerSession = nil
                 self.completedHandler("ON_TAG_LOST", nil)
                 return
             }
             
-            self.readerSession?.alertMessage = "Lettura in corso, tieni ferma la carta ancora per qualche secondo..."
+            self.readerSession?.alertMessage = alertMessages[AlertMessageKey.readingInProgress]!
             self.cieTagReader = CIETagReader(tag:self.cieTag!)
             self.startReading( )
         }
@@ -145,13 +183,7 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
 
     func startReading()
     {
-        //ATR is not available on IOS
-        // print("iso7816Tag historical bytes \(String(data: self.passportTag!.historicalBytes!, encoding: String.Encoding.utf8))")
-        //
-        // print("iso7816Tag identifier \(String(data: self.passportTag!.identifier, encoding: String.Encoding.utf8))")
-        //
-                      
-        
+
         let url1 = URL(string: self.url!.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
         
         let value = url1!.queryParameters[Constants.KEY_VALUE]!
@@ -172,7 +204,7 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
             switch(error)
             {
                 case 0:  // OK
-                    session?.alertMessage = "Lettura avvenuta con successo.\nPuoi rimuovere la carta mentre completiamo la verifica dei dati."
+                session?.alertMessage = self.alertMessages[AlertMessageKey.readingSuccess]!
                     let response = String(data: data!, encoding: .utf8)
                     let codiceServer = String((response?.split(separator: ":")[1])!)
                     let newurl = nextUrl + "?" + name + "=" + value + "&login=1&codice=" + codiceServer
@@ -181,20 +213,20 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
                     break;
                 case 0x63C0,0x6983: // PIN LOCKED
                     self.attemptsLeft = 0
-                    session?.invalidate(errorMessage: "Carta CIE bloccata")
+                session?.invalidate(errorMessage: self.alertMessages[AlertMessageKey.cardLocked]!)
                     self.completedHandler("ON_CARD_PIN_LOCKED", nil)
                     break;
                 
                 case 0x63C1: // WRONG PIN 1 ATTEMPT LEFT
                     self.attemptsLeft = 1
                     self.completedHandler("ON_PIN_ERROR", nil)
-                    session?.invalidate(errorMessage: "PIN errato, hai ancora 1 tentativo")
+                session?.invalidate(errorMessage: self.alertMessages[AlertMessageKey.wrongPin1AttemptLeft]!)
                     break;
                 
                 case 0x63C2: // WRONG PIN 2 ATTEMPTS LEFT
                     self.attemptsLeft = 2
                     self.completedHandler("ON_PIN_ERROR", nil)
-                    session?.invalidate(errorMessage: "PIN errato, hai ancora 2 tentativi")
+                    session?.invalidate(errorMessage: self.alertMessages[AlertMessageKey.wrongPin2AttemptLeft]!)
                     break;
                 
                 default: // OTHER ERROR
