@@ -34,7 +34,7 @@ struct Constants {
     //PRODUZIONE
     //"https://idserver.servizicie.interno.gov.it/idp/"
     //COLLAUDO
-    //"https://idserver.servizicie.interno.gov.it:8443/idp/"
+    //"https://collaudo.idserver.servizicie.interno.gov.it/idp/"
 }
 
 enum AlertMessageKey : String {
@@ -59,6 +59,8 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
     private var cieTagReader : CIETagReader?
     private var completedHandler: ((String?, String?)->())!
     
+    private var customIdpUrl: String?
+    private var enableLog: Bool = false
     private var url : String?
     private var pin : String?
     private var alertMessages : [AlertMessageKey : String]
@@ -66,8 +68,6 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
     @objc public var attemptsLeft : Int;
     
     override public init( ) {
-        
-        
         attemptsLeft = 3
         cieTag = nil
         cieTagReader = nil
@@ -97,6 +97,17 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
         if(maybeKey != nil){
             alertMessages[maybeKey!] = value
         }
+    }
+  
+    @objc
+    public func setCustomIdpUrl(url: String?) {
+      self.customIdpUrl = url
+      print("Custom idp url set: " + (url ?? "null"))
+    }
+  
+    @objc
+    public func enableLog(isEnabled: Bool) {
+      self.enableLog = isEnabled
     }
     
     private func start(completed: @escaping (String?, String?)->() ) {
@@ -195,8 +206,14 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
 
         let params = "\(value)=\(name)&\(Constants.authnRequest)=\(authnRequest)&\(Constants.generaCodice)=1"
         
-        self.cieTagReader?.post(url: Constants.BASE_URL_IDP, pin: self.pin!, data: params, completed: { (data, error) in
-          
+        let baseIdpUrl = self.customIdpUrl ?? Constants.BASE_URL_IDP
+        print("baseIdpUrl " + baseIdpUrl)
+      
+        self.cieTagReader?.post(
+          url: baseIdpUrl,
+          pin: self.pin!,
+          data: params,
+          completed: { (data, error) in
             let  session = self.readerSession
             //self.readerSession = nil
             // session?.invalidate()
