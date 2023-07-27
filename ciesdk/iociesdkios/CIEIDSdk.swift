@@ -76,6 +76,12 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
         super.init()
         self.initMessages()
     }
+  
+    private func debugPrint(_ items: Any..., separator: String = " ", terminator: String = "\n") {
+      if (self.enableLog) {
+        print(items, separator, terminator)
+      }
+    }
     
     private func initMessages(){
         /* alert default values */
@@ -102,7 +108,7 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
     @objc
     public func setCustomIdpUrl(url: String?) {
       self.customIdpUrl = url
-      print("Custom idp url set: " + (url ?? "null"))
+      debugPrint("Custom idp url set: " + (url ?? "null"))
     }
   
     @objc
@@ -207,13 +213,20 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
         let params = "\(value)=\(name)&\(Constants.authnRequest)=\(authnRequest)&\(Constants.generaCodice)=1"
         
         let baseIdpUrl = self.customIdpUrl ?? Constants.BASE_URL_IDP
-        print("baseIdpUrl " + baseIdpUrl)
+        debugPrint("baseIdpUrl " + baseIdpUrl)
+        
+        // It's safe to force unwrap when using UTF enconding, because swift string use Unicode internally
+        let missingDataPlaceholder = "codice:XXX".data(using: .utf8)!
       
         self.cieTagReader?.post(
           url: baseIdpUrl,
           pin: self.pin!,
           data: params,
-          completed: { (data, error) in
+          completed: { [weak self] (data, error) in
+            guard let self = self else {
+              return
+            }
+            
             let  session = self.readerSession
             //self.readerSession = nil
             // session?.invalidate()
@@ -222,9 +235,10 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
             {
                 case 0:  // OK
                 session?.alertMessage = self.alertMessages[AlertMessageKey.readingSuccess]!
-                    let response = String(data: data!, encoding: .utf8)
-                    let codiceServer = String((response?.split(separator: ":")[1])!)
-                    let newurl = nextUrl + "?" + name + "=" + value + "&login=1&codice=" + codiceServer
+                    let response = String(data: data ?? missingDataPlaceholder, encoding: .utf8)
+                    let serverCode = String((response?.split(separator: ":")[1] ?? ""))
+                    let newurl = nextUrl + "?" + name + "=" + value + "&login=1&codice=" + serverCode
+                    self.debugPrint("newurl \(newurl)")
                     self.completedHandler(nil, newurl)
                     session?.invalidate()
                     break;
