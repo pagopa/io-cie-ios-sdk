@@ -34,7 +34,7 @@ struct Constants {
     //PRODUZIONE
     //"https://idserver.servizicie.interno.gov.it/idp/"
     //COLLAUDO
-    //"https://idserver.servizicie.interno.gov.it:8443/idp/"
+    //"https://collaudo.idserver.servizicie.interno.gov.it/idp/"
 }
 
 enum AlertMessageKey : String {
@@ -59,6 +59,8 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
     private var cieTagReader : CIETagReader?
     private var completedHandler: ((String?, String?)->())!
     
+    private var customIdpUrl: String?
+    private var enableLog: Bool = false
     private var url : String?
     private var pin : String?
     private var alertMessages : [AlertMessageKey : String]
@@ -66,8 +68,6 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
     @objc public var attemptsLeft : Int;
     
     override public init( ) {
-        
-        
         attemptsLeft = 3
         cieTag = nil
         cieTagReader = nil
@@ -75,6 +75,12 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
         alertMessages = [AlertMessageKey : String]()
         super.init()
         self.initMessages()
+    }
+  
+    private func debugPrint(_ items: Any..., separator: String = " ", terminator: String = "\n") {
+      if (self.enableLog) {
+        print(items, separator, terminator)
+      }
     }
     
     private func initMessages(){
@@ -97,6 +103,17 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
         if(maybeKey != nil){
             alertMessages[maybeKey!] = value
         }
+    }
+  
+    @objc
+    public func setCustomIdpUrl(url: String?) {
+      self.customIdpUrl = url
+      debugPrint("Custom idp url set: " + (url ?? "null"))
+    }
+  
+    @objc
+    public func enableLog(isEnabled: Bool) {
+      self.enableLog = isEnabled
     }
     
     private func start(completed: @escaping (String?, String?)->() ) {
@@ -195,8 +212,21 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
 
         let params = "\(value)=\(name)&\(Constants.authnRequest)=\(authnRequest)&\(Constants.generaCodice)=1"
         
-        self.cieTagReader?.post(url: Constants.BASE_URL_IDP, pin: self.pin!, data: params, completed: { (data, error) in
-          
+        let baseIdpUrl = self.customIdpUrl ?? Constants.BASE_URL_IDP
+        debugPrint("baseIdpUrl " + baseIdpUrl)
+        
+        // It's safe to force unwrap when using UTF enconding, because swift string use Unicode internally
+        let missingDataPlaceholder = "codice:XXX".data(using: .utf8)!
+      
+        self.cieTagReader?.post(
+          url: baseIdpUrl,
+          pin: self.pin!,
+          data: params,
+          completed: { [weak self] (data, error) in
+            guard let self = self else {
+              return
+            }
+            
             let  session = self.readerSession
             //self.readerSession = nil
             // session?.invalidate()
@@ -205,9 +235,10 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
             {
                 case 0:  // OK
                 session?.alertMessage = self.alertMessages[AlertMessageKey.readingSuccess]!
-                    let response = String(data: data!, encoding: .utf8)
-                    let codiceServer = String((response?.split(separator: ":")[1])!)
-                    let newurl = nextUrl + "?" + name + "=" + value + "&login=1&codice=" + codiceServer
+                    let response = String(data: data ?? missingDataPlaceholder, encoding: .utf8)
+                    let serverCode = String((response?.split(separator: ":")[1] ?? ""))
+                    let newurl = nextUrl + "?" + name + "=" + value + "&login=1&codice=" + serverCode
+                    self.debugPrint("newurl \(newurl)")
                     self.completedHandler(nil, newurl)
                     session?.invalidate()
                     break;
