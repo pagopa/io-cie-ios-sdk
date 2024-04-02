@@ -47,6 +47,7 @@ enum AlertMessageKey : String {
     case cardLocked
     case wrongPin1AttemptLeft
     case wrongPin2AttemptLeft
+    case genericError
 }
 
 
@@ -95,6 +96,7 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
         alertMessages[AlertMessageKey.cardLocked] = "Carta CIE bloccata"
         alertMessages[AlertMessageKey.wrongPin1AttemptLeft] = "PIN errato, hai ancora 1 tentativo"
         alertMessages[AlertMessageKey.wrongPin2AttemptLeft] = "PIN errato, hai ancora 2 tentativi"
+        alertMessages[AlertMessageKey.genericError] = "Qualcosa è andato storto"
     }
     
     @objc
@@ -263,7 +265,7 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
                 } catch {
                   self.debugPrint("An error occurred: \(error.localizedDescription)")
                   self.completedHandler("AUTHENTICATION_ERROR", nil)
-                  session?.invalidate()
+                  session?.invalidate(errorMessage: self.alertMessages[AlertMessageKey.genericError]!)
                 }
                     break;
                 case 0x63C0,0x6983: // PIN LOCKED
