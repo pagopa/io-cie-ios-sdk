@@ -237,36 +237,36 @@ public class CIEIDSdk : NSObject, NFCTagReaderSessionDelegate {
             {
                 case 0:  // OK
                 session?.alertMessage = self.alertMessages[AlertMessageKey.readingSuccess]!
-                let response = String(data: data ?? missingDataPlaceholder, encoding: .utf8)
-                do {
-                  guard let response = response else {
-                      throw NSError(
-                        domain: "ios-cie-sdk",
-                        code: 100,
-                        userInfo: [NSLocalizedDescriptionKey: "Response is nil."]
-                      )
-                  }
-                  let components = response.split(separator: ":")
-                  if components.count < 2 {
-                      throw NSError(
-                        domain: "ios-cie-sdk",
-                        code: 101,
-                        userInfo: [
-                          NSLocalizedDescriptionKey:
-                            "Expected component not found after splitting response."
-                        ]
-                      )
-                  }
-                  let serverCode = String(components[1])
-                  let newurl = nextUrl + "?" + name + "=" + value + "&login=1&codice=" + serverCode
-                  self.debugPrint("newurl \(newurl)")
-                  self.completedHandler(nil, newurl)
-                  session?.invalidate()
-                } catch {
-                  self.debugPrint("An error occurred: \(error.localizedDescription)")
-                  self.completedHandler("AUTHENTICATION_ERROR", nil)
-                  session?.invalidate(errorMessage: self.alertMessages[AlertMessageKey.genericError]!)
-                }
+                    let response = String(data: data ?? missingDataPlaceholder, encoding: .utf8)
+                    do {
+                      guard let response = response else {
+                          throw NSError(
+                            domain: "ios-cie-sdk",
+                            code: 100,
+                            userInfo: [NSLocalizedDescriptionKey: "Response is nil."]
+                          )
+                      }
+                      let components = response.split(separator: ":")
+                      if components.count < 2 {
+                          throw NSError(
+                            domain: "ios-cie-sdk",
+                            code: 101,
+                            userInfo: [
+                              NSLocalizedDescriptionKey:
+                                "Expected component not found after splitting response."
+                            ]
+                          )
+                      }
+                      let serverCode = String(components[1])
+                      let newurl = nextUrl + "?" + name + "=" + value + "&login=1&codice=" + serverCode
+                      self.debugPrint("newurl \(newurl)")
+                      self.completedHandler(nil, newurl)
+                      session?.invalidate()
+                    } catch {
+                      self.debugPrint("An error occurred: \(error.localizedDescription)")
+                      self.completedHandler("AUTHENTICATION_ERROR", nil)
+                      session?.invalidate(errorMessage: self.alertMessages[AlertMessageKey.genericError]!)
+                    }
                     break;
                 case 0x63C0,0x6983: // PIN LOCKED
                     self.attemptsLeft = 0
